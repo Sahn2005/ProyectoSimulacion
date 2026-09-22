@@ -35,6 +35,7 @@ Además se abren **dos ventanas flotantes** aparte del mundo 3D:
   tocar nada.
 
   Integrantes
+  
   -Adrian Zarate 
   - Sebastian Hernandez
   - -Juan Hernandez
