@@ -33,3 +33,8 @@ Además se abren **dos ventanas flotantes** aparte del mundo 3D:
   **sincronizado con el reloj de la simulación**: la fase activa se resalta
   sola y una barra de progreso avanza en tiempo real, sin que tengas que
   tocar nada.
+
+  Integrantes
+  -Adrian Zarate 
+  - Sebastian Hernandez
+  - -Juan Hernandez
