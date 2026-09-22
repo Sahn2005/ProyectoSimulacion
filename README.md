@@ -29,7 +29,7 @@ Además se abren **dos ventanas flotantes** aparte del mundo 3D:
 
 - **"hud"** — estado en vivo de la red: si está arriba o caída, cuántos
   cortes van simulados, y el nivel de batería (%) de la zona con panel solar.
-- **"cronograma"** — el cronograma de 3 meses del proyecto (ver más abajo),
+- **"cronograma"** — el cronograma de 3 meses del proyecto,
   **sincronizado con el reloj de la simulación**: la fase activa se resalta
   sola y una barra de progreso avanza en tiempo real, sin que tengas que
   tocar nada.
