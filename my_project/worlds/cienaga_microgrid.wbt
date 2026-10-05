@@ -13,7 +13,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.2 0.05 0.98 1.45
-  position 0 -34 22
+  position 0 -42 27
   exposure 1
 }
 Background {
@@ -110,13 +110,13 @@ DEF TOWER Solid {
   boundingObject Cylinder { height 9 radius 0.35 }
 }
 
-DEF HOUSE_KNA1 Solid {
-  translation -11 8 0.9
+DEF HOUSE_NA1 Solid {
+  translation -11.6 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.05 0.55 0.55
-        roughness 0.85
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -124,16 +124,16 @@ DEF HOUSE_KNA1 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.0
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.55 0.58
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -142,9 +142,9 @@ DEF HOUSE_KNA1 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNA1 Shape {
-          appearance DEF WIN_KNA1_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NA1 Shape {
+          appearance DEF WIN_NA1_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -154,14 +154,79 @@ DEF HOUSE_KNA1 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -170,19 +235,19 @@ DEF HOUSE_KNA1 Solid {
       ]
     }
   ]
-  name "casa_KNA1"
+  name "casa_NA1"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF HOUSE_KNA2 Solid {
-  translation -7 8 0.9
+DEF HOUSE_NA2 Solid {
+  translation -9 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.92 0.75 0.20
-        roughness 0.85
+        baseColor 0.55 0.68 0.78
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -190,16 +255,16 @@ DEF HOUSE_KNA2 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.06
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.28 0.18
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -208,9 +273,9 @@ DEF HOUSE_KNA2 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNA2 Shape {
-          appearance DEF WIN_KNA2_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NA2 Shape {
+          appearance DEF WIN_NA2_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -220,14 +285,79 @@ DEF HOUSE_KNA2 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -236,19 +366,19 @@ DEF HOUSE_KNA2 Solid {
       ]
     }
   ]
-  name "casa_KNA2"
+  name "casa_NA2"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF HOUSE_KNA3 Solid {
-  translation -11 12 0.9
+DEF HOUSE_NA3 Solid {
+  translation -6.4 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.85 0.35 0.30
-        roughness 0.85
+        baseColor 0.8 0.6 0.55
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -256,16 +386,16 @@ DEF HOUSE_KNA3 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.0
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.55 0.58
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -274,9 +404,9 @@ DEF HOUSE_KNA3 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNA3 Shape {
-          appearance DEF WIN_KNA3_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NA3 Shape {
+          appearance DEF WIN_NA3_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -286,14 +416,79 @@ DEF HOUSE_KNA3 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -302,19 +497,19 @@ DEF HOUSE_KNA3 Solid {
       ]
     }
   ]
-  name "casa_KNA3"
+  name "casa_NA3"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF HOUSE_KNA4 Solid {
-  translation -7 12 0.9
+DEF HOUSE_NA4 Solid {
+  translation -11.6 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.30 0.55 0.80
-        roughness 0.85
+        baseColor 0.63 0.72 0.6
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -322,16 +517,16 @@ DEF HOUSE_KNA4 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.06
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.28 0.18
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -340,9 +535,9 @@ DEF HOUSE_KNA4 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNA4 Shape {
-          appearance DEF WIN_KNA4_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NA4 Shape {
+          appearance DEF WIN_NA4_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -352,14 +547,79 @@ DEF HOUSE_KNA4 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -368,14 +628,669 @@ DEF HOUSE_KNA4 Solid {
       ]
     }
   ]
-  name "casa_KNA4"
+  name "casa_NA4"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF SIGN_KNA Solid {
-  translation -9 5.5 1.2
+DEF HOUSE_NA5 Solid {
+  translation -9 6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.65 0.5
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NA5 Shape {
+          appearance DEF WIN_NA5_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_NA5"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NA6 Solid {
+  translation -6.4 6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NA6 Shape {
+          appearance DEF WIN_NA6_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_NA6"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NA7 Solid {
+  translation -11.6 8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NA7 Shape {
+          appearance DEF WIN_NA7_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_NA7"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NA8 Solid {
+  translation -9 8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.55 0.68 0.78
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NA8 Shape {
+          appearance DEF WIN_NA8_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_NA8"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NA9 Solid {
+  translation -6.4 8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.55
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NA9 Shape {
+          appearance DEF WIN_NA9_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_NA9"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF SIGN_NA Solid {
+  translation -9 1.5 1.2
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
@@ -391,16 +1306,16 @@ DEF SIGN_KNA Solid {
       ]
     }
   ]
-  name "letrero_KNA"
+  name "letrero_NA"
 }
 
-DEF HOUSE_KNB1 Solid {
-  translation 7 8 0.9
+DEF HOUSE_SA1 Solid {
+  translation -11.6 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.40 0.72 0.55
-        roughness 0.85
+        baseColor 0.63 0.72 0.6
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -408,27 +1323,27 @@ DEF HOUSE_KNB1 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.06
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.55 0.58
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
     }
     Transform {
-      translation 0.5 1.01 0.15
-      rotation 1 0 0 1.5708
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
       children [
-        DEF WIN_KNB1 Shape {
-          appearance DEF WIN_KNB1_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_SA1 Shape {
+          appearance DEF WIN_SA1_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -438,14 +1353,1278 @@ DEF HOUSE_KNB1 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA1"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA2 Solid {
+  translation -9 -8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.65 0.5
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA2 Shape {
+          appearance DEF WIN_SA2_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA2"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA3 Solid {
+  translation -6.4 -8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA3 Shape {
+          appearance DEF WIN_SA3_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA3"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA4 Solid {
+  translation -11.6 -6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA4 Shape {
+          appearance DEF WIN_SA4_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA4"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA5 Solid {
+  translation -9 -6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.55 0.68 0.78
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA5 Shape {
+          appearance DEF WIN_SA5_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA5"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA6 Solid {
+  translation -6.4 -6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.55
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA6 Shape {
+          appearance DEF WIN_SA6_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA6"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA7 Solid {
+  translation -11.6 -3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.63 0.72 0.6
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA7 Shape {
+          appearance DEF WIN_SA7_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA7"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA8 Solid {
+  translation -9 -3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.65 0.5
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA8 Shape {
+          appearance DEF WIN_SA8_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA8"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SA9 Solid {
+  translation -6.4 -3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SA9 Shape {
+          appearance DEF WIN_SA9_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "casa_SA9"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF SIGN_SA Solid {
+  translation -9 -1.5 1.2
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
+      geometry Cylinder { height 2.4 radius 0.08 }
+    }
+    Transform {
+      translation 0 0 1.3
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.6 0.15 0.15 }
+          geometry Box { size 1.4 0.08 0.6 }
+        }
+      ]
+    }
+  ]
+  name "letrero_SA"
+}
+
+DEF HOUSE_NB1 Solid {
+  translation 6.4 3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NB1 Shape {
+          appearance DEF WIN_NB1_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -454,7 +2633,7 @@ DEF HOUSE_KNB1 Solid {
       ]
     }
         Transform {
-          translation 0 0 1.3
+          translation 0 0 1.25
           rotation 1 0 0 0.35
           children [
             Shape {
@@ -470,19 +2649,19 @@ DEF HOUSE_KNB1 Solid {
           ]
         }
   ]
-  name "casa_KNB1"
+  name "casa_NB1"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF HOUSE_KNB2 Solid {
-  translation 11 8 0.9
+DEF HOUSE_NB2 Solid {
+  translation 9 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.92 0.90 0.85
-        roughness 0.85
+        baseColor 0.55 0.68 0.78
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -490,16 +2669,16 @@ DEF HOUSE_KNB2 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.06
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.28 0.18
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -508,9 +2687,9 @@ DEF HOUSE_KNB2 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNB2 Shape {
-          appearance DEF WIN_KNB2_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NB2 Shape {
+          appearance DEF WIN_NB2_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -520,14 +2699,79 @@ DEF HOUSE_KNB2 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -536,7 +2780,7 @@ DEF HOUSE_KNB2 Solid {
       ]
     }
         Transform {
-          translation 0 0 1.3
+          translation 0 0 1.25
           rotation 1 0 0 0.35
           children [
             Shape {
@@ -552,19 +2796,19 @@ DEF HOUSE_KNB2 Solid {
           ]
         }
   ]
-  name "casa_KNB2"
+  name "casa_NB2"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF HOUSE_KNB3 Solid {
-  translation 7 12 0.9
+DEF HOUSE_NB3 Solid {
+  translation 11.6 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.05 0.55 0.55
-        roughness 0.85
+        baseColor 0.8 0.6 0.55
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -572,16 +2816,16 @@ DEF HOUSE_KNB3 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.0
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.55 0.58
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -590,9 +2834,9 @@ DEF HOUSE_KNB3 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNB3 Shape {
-          appearance DEF WIN_KNB3_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NB3 Shape {
+          appearance DEF WIN_NB3_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -602,14 +2846,79 @@ DEF HOUSE_KNB3 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -618,7 +2927,7 @@ DEF HOUSE_KNB3 Solid {
       ]
     }
         Transform {
-          translation 0 0 1.3
+          translation 0 0 1.25
           rotation 1 0 0 0.35
           children [
             Shape {
@@ -634,19 +2943,19 @@ DEF HOUSE_KNB3 Solid {
           ]
         }
   ]
-  name "casa_KNB3"
+  name "casa_NB3"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF HOUSE_KNB4 Solid {
-  translation 11 12 0.9
+DEF HOUSE_NB4 Solid {
+  translation 6.4 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.92 0.75 0.20
-        roughness 0.85
+        baseColor 0.63 0.72 0.6
+        roughness 0.95
       }
       geometry Box {
         size 2 2 1.8
@@ -654,16 +2963,16 @@ DEF HOUSE_KNB4 Solid {
     }
     Transform {
       translation 0 0 1.0
-      rotation 1 0 0 0.12
+      rotation 1 0 0 0.06
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.28 0.18
-            metalness 0.3
-            roughness 0.6
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
           }
           geometry Box {
-            size 2.5 2.5 0.18
+            size 2.15 2.15 0.14
           }
         }
       ]
@@ -672,9 +2981,9 @@ DEF HOUSE_KNB4 Solid {
       translation 0.5 1.01 0.15
       rotation 1 0 0 1.5708
       children [
-        DEF WIN_KNB4 Shape {
-          appearance DEF WIN_KNB4_APP PBRAppearance {
-            baseColor 0.9 0.9 0.85
+        DEF WIN_NB4 Shape {
+          appearance DEF WIN_NB4_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
             emissiveColor 0 0 0
             roughness 0.4
           }
@@ -684,14 +2993,79 @@ DEF HOUSE_KNB4 Solid {
         }
       ]
     }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
     Transform {
       translation -0.5 1.01 -0.4
       rotation 1 0 0 1.5708
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.32 0.18 0.1
-            roughness 0.7
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
           }
           geometry Box {
             size 0.55 1.0 0.05
@@ -700,7 +3074,7 @@ DEF HOUSE_KNB4 Solid {
       ]
     }
         Transform {
-          translation 0 0 1.3
+          translation 0 0 1.25
           rotation 1 0 0 0.35
           children [
             Shape {
@@ -716,14 +3090,749 @@ DEF HOUSE_KNB4 Solid {
           ]
         }
   ]
-  name "casa_KNB4"
+  name "casa_NB4"
   boundingObject Box {
     size 2 2 1.8
   }
 }
 
-DEF SIGN_KNB Solid {
-  translation 9 5.5 1.2
+DEF HOUSE_NB5 Solid {
+  translation 9 6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.65 0.5
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NB5 Shape {
+          appearance DEF WIN_NB5_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_NB5"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NB6 Solid {
+  translation 11.6 6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NB6 Shape {
+          appearance DEF WIN_NB6_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_NB6"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NB7 Solid {
+  translation 6.4 8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NB7 Shape {
+          appearance DEF WIN_NB7_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_NB7"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NB8 Solid {
+  translation 9 8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.55 0.68 0.78
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NB8 Shape {
+          appearance DEF WIN_NB8_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_NB8"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_NB9 Solid {
+  translation 11.6 8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.55
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 1.01 0.15
+      rotation 1 0 0 1.5708
+      children [
+        DEF WIN_NB9 Shape {
+          appearance DEF WIN_NB9_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 1.03 0.15
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 1.01 -0.4
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_NB9"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF SIGN_NB Solid {
+  translation 9 1.5 1.2
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
@@ -739,7 +3848,1350 @@ DEF SIGN_KNB Solid {
       ]
     }
   ]
-  name "letrero_KNB"
+  name "letrero_NB"
+}
+
+DEF HOUSE_SB1 Solid {
+  translation 6.4 -8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.63 0.72 0.6
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB1 Shape {
+          appearance DEF WIN_SB1_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB1"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB2 Solid {
+  translation 9 -8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.65 0.5
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB2 Shape {
+          appearance DEF WIN_SB2_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB2"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB3 Solid {
+  translation 11.6 -8.6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB3 Shape {
+          appearance DEF WIN_SB3_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB3"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB4 Solid {
+  translation 6.4 -6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB4 Shape {
+          appearance DEF WIN_SB4_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB4"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB5 Solid {
+  translation 9 -6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.55 0.68 0.78
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB5 Shape {
+          appearance DEF WIN_SB5_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB5"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB6 Solid {
+  translation 11.6 -6 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.55
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.78 0.75
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB6 Shape {
+          appearance DEF WIN_SB6_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB6"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB7 Solid {
+  translation 6.4 -3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.63 0.72 0.6
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB7 Shape {
+          appearance DEF WIN_SB7_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB7"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB8 Solid {
+  translation 9 -3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.65 0.5
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB8 Shape {
+          appearance DEF WIN_SB8_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB8"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF HOUSE_SB9 Solid {
+  translation 11.6 -3.4 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.68 0.66 0.62
+        roughness 0.95
+      }
+      geometry Box {
+        size 2 2 1.8
+      }
+    }
+    Transform {
+      translation 0 0 1.0
+      rotation 1 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.58 0.58 0.6
+            metalness 0.25
+            roughness 0.65
+          }
+          geometry Box {
+            size 2.15 2.15 0.14
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.5 -1.01 0.15
+      rotation 1 0 0 -1.5708
+      children [
+        DEF WIN_SB9 Shape {
+          appearance DEF WIN_SB9_APP PBRAppearance {
+            baseColor 0.85 0.87 0.85
+            emissiveColor 0 0 0
+            roughness 0.4
+          }
+          geometry Box {
+            size 0.55 0.55 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation -0.20 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.07 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.06 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.19 -1.03 0.15
+          rotation 1 0 0 -1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.15 0.15
+                metalness 0.6
+                roughness 0.5
+              }
+              geometry Box {
+                size 0.03 0.6 0.03
+              }
+            }
+          ]
+        }
+    Transform {
+      translation -0.5 -1.01 -0.4
+      rotation 1 0 0 -1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.28 0.3 0.3
+            metalness 0.4
+            roughness 0.6
+          }
+          geometry Box {
+            size 0.55 1.0 0.05
+          }
+        }
+      ]
+    }
+        Transform {
+          translation 0 0 1.25
+          rotation 1 0 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.08 0.2
+                metalness 0.6
+                roughness 0.3
+              }
+              geometry Box {
+                size 1.6 1.6 0.06
+              }
+            }
+          ]
+        }
+  ]
+  name "casa_SB9"
+  boundingObject Box {
+    size 2 2 1.8
+  }
+}
+
+DEF SIGN_SB Solid {
+  translation 9 -1.5 1.2
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
+      geometry Cylinder { height 2.4 radius 0.08 }
+    }
+    Transform {
+      translation 0 0 1.3
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.1 0.6 0.9 }
+          geometry Box { size 1.4 0.08 0.6 }
+        }
+      ]
+    }
+  ]
+  name "letrero_SB"
 }
 
 DEF GRID_SUPERVISOR Robot {

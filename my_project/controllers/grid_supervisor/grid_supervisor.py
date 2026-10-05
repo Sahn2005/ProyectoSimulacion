@@ -34,10 +34,10 @@ COLOR_TOWER_OK = [0.15, 0.9, 0.2]
 COLOR_TOWER_FAIL = [1.0, 0.1, 0.1]
 
 BARRIOS_SIN_SOLAR = {
-    "Kennedy - sin panel": ["KNA1", "KNA2", "KNA3", "KNA4"],
+    "Kennedy - sin panel": [f"NA{i}" for i in range(1, 10)] + [f"SA{i}" for i in range(1, 10)],
 }
 BARRIOS_CON_SOLAR = {
-    "Kennedy - con panel": ["KNB1", "KNB2", "KNB3", "KNB4"],
+    "Kennedy - con panel": [f"NB{i}" for i in range(1, 10)] + [f"SB{i}" for i in range(1, 10)],
 }
 
 supervisor = Supervisor()
