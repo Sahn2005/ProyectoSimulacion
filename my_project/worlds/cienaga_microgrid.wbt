@@ -13,7 +13,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.2 0.05 0.98 1.45
-  position 0 -42 27
+  position 100 -42 27
   exposure 1
 }
 Background {
@@ -34,6 +34,7 @@ PointLight {
 }
 
 DEF GROUND Solid {
+  translation 25 0 0
   children [
     Shape {
       appearance PBRAppearance {
@@ -41,15 +42,34 @@ DEF GROUND Solid {
         roughness 1
       }
       geometry Plane {
-        size 40 32
+        size 260 140
       }
     }
   ]
-  name "suelo_cienaga"
+  name "suelo_general"
+}
+
+DEF MAPA_CIENAGA_REAL Solid {
+  translation 0 0 -2.26
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.85 0.85 0.85
+        roughness 0.9
+      }
+      geometry Mesh {
+        url [
+          "meshes/cad-atlas_3D.obj"
+        ]
+      }
+    }
+  ]
+  name "mapa_real_cienaga_cad"
 }
 
 DEF CALLE Solid {
-  translation 0 0 0.01
+  translation 100 0 0.02
   children [
     Shape {
       appearance PBRAppearance {
@@ -74,11 +94,11 @@ DEF CALLE Solid {
       ]
     }
   ]
-  name "calle_principal"
+  name "calle_kennedy"
 }
 
 DEF TOWER Solid {
-  translation 0 0 0
+  translation 100 0 0
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 metalness 0.7 roughness 0.4 }
@@ -111,7 +131,7 @@ DEF TOWER Solid {
 }
 
 DEF HOUSE_NA1 Solid {
-  translation -11.6 3.4 0.9
+  translation 88.4 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -242,7 +262,7 @@ DEF HOUSE_NA1 Solid {
 }
 
 DEF HOUSE_NA2 Solid {
-  translation -9 3.4 0.9
+  translation 91 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -373,7 +393,7 @@ DEF HOUSE_NA2 Solid {
 }
 
 DEF HOUSE_NA3 Solid {
-  translation -6.4 3.4 0.9
+  translation 93.6 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -504,7 +524,7 @@ DEF HOUSE_NA3 Solid {
 }
 
 DEF HOUSE_NA4 Solid {
-  translation -11.6 6 0.9
+  translation 88.4 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -635,7 +655,7 @@ DEF HOUSE_NA4 Solid {
 }
 
 DEF HOUSE_NA5 Solid {
-  translation -9 6 0.9
+  translation 91 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -766,7 +786,7 @@ DEF HOUSE_NA5 Solid {
 }
 
 DEF HOUSE_NA6 Solid {
-  translation -6.4 6 0.9
+  translation 93.6 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -897,7 +917,7 @@ DEF HOUSE_NA6 Solid {
 }
 
 DEF HOUSE_NA7 Solid {
-  translation -11.6 8.6 0.9
+  translation 88.4 8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1028,7 +1048,7 @@ DEF HOUSE_NA7 Solid {
 }
 
 DEF HOUSE_NA8 Solid {
-  translation -9 8.6 0.9
+  translation 91 8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1159,7 +1179,7 @@ DEF HOUSE_NA8 Solid {
 }
 
 DEF HOUSE_NA9 Solid {
-  translation -6.4 8.6 0.9
+  translation 93.6 8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1290,7 +1310,7 @@ DEF HOUSE_NA9 Solid {
 }
 
 DEF SIGN_NA Solid {
-  translation -9 1.5 1.2
+  translation 91 1.5 1.2
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
@@ -1310,7 +1330,7 @@ DEF SIGN_NA Solid {
 }
 
 DEF HOUSE_SA1 Solid {
-  translation -11.6 -8.6 0.9
+  translation 88.4 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1441,7 +1461,7 @@ DEF HOUSE_SA1 Solid {
 }
 
 DEF HOUSE_SA2 Solid {
-  translation -9 -8.6 0.9
+  translation 91 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1572,7 +1592,7 @@ DEF HOUSE_SA2 Solid {
 }
 
 DEF HOUSE_SA3 Solid {
-  translation -6.4 -8.6 0.9
+  translation 93.6 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1703,7 +1723,7 @@ DEF HOUSE_SA3 Solid {
 }
 
 DEF HOUSE_SA4 Solid {
-  translation -11.6 -6 0.9
+  translation 88.4 -6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1834,7 +1854,7 @@ DEF HOUSE_SA4 Solid {
 }
 
 DEF HOUSE_SA5 Solid {
-  translation -9 -6 0.9
+  translation 91 -6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -1965,7 +1985,7 @@ DEF HOUSE_SA5 Solid {
 }
 
 DEF HOUSE_SA6 Solid {
-  translation -6.4 -6 0.9
+  translation 93.6 -6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2096,7 +2116,7 @@ DEF HOUSE_SA6 Solid {
 }
 
 DEF HOUSE_SA7 Solid {
-  translation -11.6 -3.4 0.9
+  translation 88.4 -3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2227,7 +2247,7 @@ DEF HOUSE_SA7 Solid {
 }
 
 DEF HOUSE_SA8 Solid {
-  translation -9 -3.4 0.9
+  translation 91 -3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2358,7 +2378,7 @@ DEF HOUSE_SA8 Solid {
 }
 
 DEF HOUSE_SA9 Solid {
-  translation -6.4 -3.4 0.9
+  translation 93.6 -3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2489,7 +2509,7 @@ DEF HOUSE_SA9 Solid {
 }
 
 DEF SIGN_SA Solid {
-  translation -9 -1.5 1.2
+  translation 91 -1.5 1.2
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
@@ -2509,7 +2529,7 @@ DEF SIGN_SA Solid {
 }
 
 DEF HOUSE_NB1 Solid {
-  translation 6.4 3.4 0.9
+  translation 106.4 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2656,7 +2676,7 @@ DEF HOUSE_NB1 Solid {
 }
 
 DEF HOUSE_NB2 Solid {
-  translation 9 3.4 0.9
+  translation 109 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2803,7 +2823,7 @@ DEF HOUSE_NB2 Solid {
 }
 
 DEF HOUSE_NB3 Solid {
-  translation 11.6 3.4 0.9
+  translation 111.6 3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -2950,7 +2970,7 @@ DEF HOUSE_NB3 Solid {
 }
 
 DEF HOUSE_NB4 Solid {
-  translation 6.4 6 0.9
+  translation 106.4 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3097,7 +3117,7 @@ DEF HOUSE_NB4 Solid {
 }
 
 DEF HOUSE_NB5 Solid {
-  translation 9 6 0.9
+  translation 109 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3244,7 +3264,7 @@ DEF HOUSE_NB5 Solid {
 }
 
 DEF HOUSE_NB6 Solid {
-  translation 11.6 6 0.9
+  translation 111.6 6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3391,7 +3411,7 @@ DEF HOUSE_NB6 Solid {
 }
 
 DEF HOUSE_NB7 Solid {
-  translation 6.4 8.6 0.9
+  translation 106.4 8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3538,7 +3558,7 @@ DEF HOUSE_NB7 Solid {
 }
 
 DEF HOUSE_NB8 Solid {
-  translation 9 8.6 0.9
+  translation 109 8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3685,7 +3705,7 @@ DEF HOUSE_NB8 Solid {
 }
 
 DEF HOUSE_NB9 Solid {
-  translation 11.6 8.6 0.9
+  translation 111.6 8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3832,7 +3852,7 @@ DEF HOUSE_NB9 Solid {
 }
 
 DEF SIGN_NB Solid {
-  translation 9 1.5 1.2
+  translation 109 1.5 1.2
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
@@ -3852,7 +3872,7 @@ DEF SIGN_NB Solid {
 }
 
 DEF HOUSE_SB1 Solid {
-  translation 6.4 -8.6 0.9
+  translation 106.4 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -3999,7 +4019,7 @@ DEF HOUSE_SB1 Solid {
 }
 
 DEF HOUSE_SB2 Solid {
-  translation 9 -8.6 0.9
+  translation 109 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -4146,7 +4166,7 @@ DEF HOUSE_SB2 Solid {
 }
 
 DEF HOUSE_SB3 Solid {
-  translation 11.6 -8.6 0.9
+  translation 111.6 -8.6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -4293,7 +4313,7 @@ DEF HOUSE_SB3 Solid {
 }
 
 DEF HOUSE_SB4 Solid {
-  translation 6.4 -6 0.9
+  translation 106.4 -6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -4440,7 +4460,7 @@ DEF HOUSE_SB4 Solid {
 }
 
 DEF HOUSE_SB5 Solid {
-  translation 9 -6 0.9
+  translation 109 -6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -4587,7 +4607,7 @@ DEF HOUSE_SB5 Solid {
 }
 
 DEF HOUSE_SB6 Solid {
-  translation 11.6 -6 0.9
+  translation 111.6 -6 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -4734,7 +4754,7 @@ DEF HOUSE_SB6 Solid {
 }
 
 DEF HOUSE_SB7 Solid {
-  translation 6.4 -3.4 0.9
+  translation 106.4 -3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -4881,7 +4901,7 @@ DEF HOUSE_SB7 Solid {
 }
 
 DEF HOUSE_SB8 Solid {
-  translation 9 -3.4 0.9
+  translation 109 -3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -5028,7 +5048,7 @@ DEF HOUSE_SB8 Solid {
 }
 
 DEF HOUSE_SB9 Solid {
-  translation 11.6 -3.4 0.9
+  translation 111.6 -3.4 0.9
   children [
     Shape {
       appearance PBRAppearance {
@@ -5175,7 +5195,7 @@ DEF HOUSE_SB9 Solid {
 }
 
 DEF SIGN_SB Solid {
-  translation 9 -1.5 1.2
+  translation 109 -1.5 1.2
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.4 0.4 0.4 }
@@ -5201,6 +5221,11 @@ DEF GRID_SUPERVISOR Robot {
       name "hud"
       width 480
       height 260
+    }
+    Display {
+      name "cronograma"
+      width 620
+      height 300
     }
   ]
   name "supervisor_red_electrica"
