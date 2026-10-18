@@ -1,264 +1,219 @@
 """
-Generador del archivo .wbt para la simulacion de microrred solar en el
-barrio Kennedy, Cienaga. Se ejecuta UNA sola vez en este entorno para
-producir el mundo Webots.
+Generador del archivo .wbt para la simulacion de microrred solar sobre el
+mapa real de Cienaga (levantamiento CAD aportado por el usuario).
+
+Se ejecuta cada vez que se quiera regenerar el mundo:
+    python3 gen_world.py
 """
+import os
 
-# El modelo CAD real (cad-atlas_3D.obj) no trae etiquetas de barrios o
-# calles, asi que no hay forma de saber en que manzana exacta del mapa
-# queda Kennedy. Por eso el conjunto de casas se ubica en un lote
-# adyacente al mapa real (desplazado KENNEDY_X_OFFSET en X), separado
-# para que no se encime con los edificios reales importados.
-KENNEDY_X_OFFSET = 100
+# Todo se coloca como hijo de un Solid que comparte translation/rotation con
+# la malla del mapa real, asi cada edificio queda alineado con el terreno.
+# Coordenadas locales: x y z del .obj (Rhino: Y es la altura).
+MAPA_TRANSLATION = "0 0 -2.26"
+MAPA_ROTATION = "1 0 0 1.5708"
+ALTURA_EDIFICIO_REAL = 3.4
 
-BARRIOS = [
-    # (nombre_zona, prefijo_def, centro_x, centro_y, tiene_solar)
-    ("Kennedy - Zona sin panel solar (Norte)", "NA", -9 + KENNEDY_X_OFFSET,  6, False),
-    ("Kennedy - Zona sin panel solar (Sur)",   "SA", -9 + KENNEDY_X_OFFSET, -6, False),
-    ("Kennedy - Zona con panel solar (Norte)", "NB",  9 + KENNEDY_X_OFFSET,  6, True),
-    ("Kennedy - Zona con panel solar (Sur)",   "SB",  9 + KENNEDY_X_OFFSET, -6, True),
+# True  -> la mitad de los edificios con panel y la otra mitad sin (comparacion)
+# False -> todos los edificios que puedan llevar panel lo tienen
+COMPARAR_CON_Y_SIN_SOLAR = True
+
+# (cx, cy, cz, dx, dz): huellas de construccion extraidas de las curvas
+# cerradas del CAD original. 1 huella degenerada (0.6 x 0.08 m) se descarto.
+EDIFICIOS_REALES = [
+    (-54.62, 2.71, 15.58, 14.07, 11.65),
+    (11.84, 2.58, 9.80, 6.45, 11.65),
+    (-53.77, 2.51, 40.42, 23.07, 32.12),
+    (60.50, 2.53, 6.73, 1.17, 4.80),
+    (-20.40, 2.67, 0.59, 4.69, 8.74),
+    (-58.54, 2.88, -0.08, 7.04, 24.17),
+    (52.41, 2.50, 48.12, 4.69, 10.49),
+    (-19.68, 2.56, 16.95, 15.24, 21.55),
+    (-30.22, 3.02, -52.59, 7.07, 5.70),
+    (12.19, 2.49, 33.33, 6.45, 7.57),
+    (-27.08, 2.67, 2.69, 9.97, 9.90),
+    (-60.09, 3.02, -14.84, 1.76, 8.39),
+    (23.03, 2.43, 51.77, 7.87, 7.07),
+    (24.45, 2.51, 34.68, 11.14, 20.39),
+    (-16.31, 2.95, -53.34, 43.64, 3.95),
+    (-60.85, 2.70, 19.62, 0.59, 4.25),
+    (-5.51, 2.77, -32.26, 9.38, 18.64),
+    (27.32, 2.59, -4.07, 22.86, 14.56),
+    (12.19, 2.43, 44.51, 15.24, 15.14),
+    (-27.39, 2.92, -34.36, 25.21, 22.72),
+    (24.97, 2.63, -22.47, 11.14, 18.64),
+    (15.12, 2.55, 19.23, 5.28, 4.08),
+    (58.98, 2.54, 1.41, 4.10, 6.50),
+    (14.91, 2.71, -35.55, 19.93, 18.06),
+    (18.29, 2.49, 35.08, 9.38, 20.97),
+    (-56.06, 2.43, 52.70, 6.54, 4.74),
+    (-1.17, 2.80, -46.12, 5.86, 5.24),
+    (43.15, 2.52, 32.98, 11.14, 8.15),
+    (41.76, 2.48, 49.32, 17.16, 12.31),
+    (33.31, 2.56, 16.89, 21.10, 27.96),
+    (-25.79, 2.76, -10.33, 17.00, 15.73),
+    (-43.93, 3.10, -49.86, 9.38, 11.52),
 ]
 
-HOUSE_OFFSETS = [
-    (dx, dy)
-    for dy in (-2.6, 0, 2.6)
-    for dx in (-2.6, 0, 2.6)
-]  # conjunto de 3x3 = 9 casas por bloque, bien juntas como un conjunto residencial
-
-# Paleta inspirada en el barrio Kennedy: casas humildes de un piso,
-# bloque de concreto a la vista o pintado en tonos sencillos (no el
-# estilo colonial vistoso del centro historico). Cada tupla es
-# (color_pared, color_techo, tipo_techo) donde tipo_techo es "losa" (placa
-# de concreto plana) o "zinc" (lamina con leve inclinacion).
-PALETA = [
-    ("0.68 0.66 0.62", "0.78 0.78 0.75", "losa"),   # bloque de concreto sin pintar + placa
-    ("0.55 0.68 0.78", "0.58 0.58 0.6",  "zinc"),    # celeste desgastado + zinc
-    ("0.8 0.6 0.55",   "0.78 0.78 0.75", "losa"),    # salmon + placa
-    ("0.63 0.72 0.6",  "0.58 0.58 0.6",  "zinc"),    # verde palido + zinc
-    ("0.7 0.65 0.5",   "0.58 0.58 0.6",  "zinc"),    # beige + zinc
-    ("0.68 0.66 0.62", "0.58 0.58 0.6",  "zinc"),    # bloque de concreto sin pintar + zinc
-]
-
-_color_counter = 0
+PANEL_W, PANEL_D = 1.6, 1.0   # tamano de cada panel (m)
 
 
-def house_block(def_id, x, y, tiene_solar, orientacion=-1):
-    global _color_counter
-    color_pared, color_techo, tipo_techo = PALETA[_color_counter % len(PALETA)]
-    _color_counter += 1
+def paneles_que_caben(dx, dz):
+    nx = min(4, int((dx - 1.0) // (PANEL_W + 0.3)))
+    nz = min(3, int((dz - 1.0) // (PANEL_D + 0.3)))
+    return max(nx, 0), max(nz, 0)
 
-    # orientacion: -1 -> puerta/ventana miran hacia -y (barrios al norte)
-    #               1 -> puerta/ventana miran hacia +y (barrios al sur)
-    frente_y = -1.01 * orientacion
-    reja_y = -1.03 * orientacion
-    rot_x = 1.5708 if orientacion < 0 else -1.5708
 
-    inclinacion_techo = 0.0 if tipo_techo == "losa" else 0.06
+_ventana_counter = {"RSOL": 0, "RNOS": 0}
 
-    barras = ""
-    for i in range(4):
-        bx = -0.2 + i * 0.13
-        barras += f"""
-        Transform {{
-          translation {bx:.2f} {reja_y} 0.15
-          rotation 1 0 0 {rot_x}
-          children [
-            Shape {{
-              appearance PBRAppearance {{
-                baseColor 0.15 0.15 0.15
-                metalness 0.6
-                roughness 0.5
-              }}
-              geometry Box {{
-                size 0.03 0.6 0.03
-              }}
-            }}
-          ]
-        }}"""
 
-    panel = ""
-    if tiene_solar:
-        panel = f"""
-        Transform {{
-          translation 0 0 1.25
-          rotation 1 0 0 0.35
-          children [
-            Shape {{
-              appearance PBRAppearance {{
-                baseColor 0.05 0.08 0.2
-                metalness 0.6
-                roughness 0.3
-              }}
-              geometry Box {{
-                size 1.6 1.6 0.06
-              }}
-            }}
-          ]
-        }}"""
+def ventana(grupo, cx, y, cz, size):
+    _ventana_counter[grupo] += 1
+    n = _ventana_counter[grupo]
     return f"""
-DEF HOUSE_{def_id} Solid {{
-  translation {x} {y} 0.9
-  children [
-    Shape {{
-      appearance PBRAppearance {{
-        baseColor {color_pared}
-        roughness 0.95
-      }}
-      geometry Box {{
-        size 2 2 1.8
-      }}
-    }}
     Transform {{
-      translation 0 0 1.0
-      rotation 1 0 0 {inclinacion_techo}
+      translation {cx:.3f} {y:.3f} {cz:.3f}
       children [
         Shape {{
-          appearance PBRAppearance {{
-            baseColor {color_techo}
-            metalness 0.25
-            roughness 0.65
-          }}
-          geometry Box {{
-            size 2.15 2.15 0.14
-          }}
-        }}
-      ]
-    }}
-    Transform {{
-      translation 0.5 {frente_y} 0.15
-      rotation 1 0 0 {rot_x}
-      children [
-        DEF WIN_{def_id} Shape {{
-          appearance DEF WIN_{def_id}_APP PBRAppearance {{
-            baseColor 0.85 0.87 0.85
+          appearance DEF WIN_{grupo}_{n}_APP PBRAppearance {{
+            baseColor 0.04 0.04 0.05
             emissiveColor 0 0 0
+            emissiveIntensity 3
             roughness 0.4
           }}
           geometry Box {{
-            size 0.55 0.55 0.05
+            size {size}
           }}
         }}
       ]
-    }}{barras}
+    }}"""
+
+
+def paneles_techo(cx, cy, cz, dx, dz, nx, nz):
+    y_techo = cy + ALTURA_EDIFICIO_REAL + 0.25
+    out = ""
+    paso_x = PANEL_W + 0.3
+    paso_z = PANEL_D + 0.3
+    x0 = cx - (nx - 1) * paso_x / 2
+    z0 = cz - (nz - 1) * paso_z / 2
+    for i in range(nx):
+        for j in range(nz):
+            out += f"""
     Transform {{
-      translation -0.5 {frente_y} -0.4
-      rotation 1 0 0 {rot_x}
+      translation {x0 + i * paso_x:.3f} {y_techo:.3f} {z0 + j * paso_z:.3f}
+      rotation 1 0 0 0.25
       children [
         Shape {{
           appearance PBRAppearance {{
-            baseColor 0.28 0.3 0.3
-            metalness 0.4
-            roughness 0.6
+            baseColor 0.05 0.08 0.25
+            metalness 0.6
+            roughness 0.3
           }}
           geometry Box {{
-            size 0.55 1.0 0.05
+            size {PANEL_W} 0.06 {PANEL_D}
           }}
         }}
       ]
-    }}{panel}
-  ]
-  name "casa_{def_id}"
-  boundingObject Box {{
-    size 2 2 1.8
-  }}
-}}
-"""
+    }}"""
+    return out
 
 
-def barrio_sign_color(tiene_solar):
-    return "0.1 0.6 0.9" if tiene_solar else "0.6 0.15 0.15"
+def edificio(cx, cy, cz, dx, dz, solar):
+    grupo = "RSOL" if solar else "RNOS"
+    base = cy + ALTURA_EDIFICIO_REAL / 2.0
+    yv = cy + ALTURA_EDIFICIO_REAL * 0.55
+    extra = ""
 
+    n_x = max(1, min(5, round(dx / 3.5)))
+    paso_x = dx / (n_x + 1)
+    for k in range(1, n_x + 1):
+        px = cx - dx / 2 + k * paso_x
+        for borde in (dz / 2 + 0.03, -dz / 2 - 0.03):
+            extra += ventana(grupo, px, yv, cz + borde, "0.55 0.55 0.04")
 
-def barrio_block(nombre, prefijo, cx, cy, tiene_solar):
-    houses = ""
-    house_defs = []
-    orientacion = -1 if cy > 0 else 1  # las casas miran hacia la calle central
-    for i, (dx, dy) in enumerate(HOUSE_OFFSETS, start=1):
-        def_id = f"{prefijo}{i}"
-        house_defs.append(def_id)
-        houses += house_block(def_id, cx + dx, cy + dy, tiene_solar, orientacion)
+    n_z = max(1, min(5, round(dz / 3.5)))
+    paso_z = dz / (n_z + 1)
+    for k in range(1, n_z + 1):
+        pz = cz - dz / 2 + k * paso_z
+        for borde in (dx / 2 + 0.03, -dx / 2 - 0.03):
+            extra += ventana(grupo, cx + borde, yv, pz, "0.04 0.55 0.55")
 
-    sign_color = barrio_sign_color(tiene_solar)
-    sign = f"""
-DEF SIGN_{prefijo} Solid {{
-  translation {cx} {cy + orientacion * 4.5} 1.2
-  children [
-    Shape {{
-      appearance PBRAppearance {{ baseColor 0.4 0.4 0.4 }}
-      geometry Cylinder {{ height 2.4 radius 0.08 }}
-    }}
-    Transform {{
-      translation 0 0 1.3
-      children [
-        Shape {{
-          appearance PBRAppearance {{ baseColor {sign_color} }}
-          geometry Box {{ size 1.4 0.08 0.6 }}
-        }}
-      ]
-    }}
-  ]
-  name "letrero_{prefijo}"
-}}
-"""
-    return houses + sign, house_defs
+    if solar:
+        nx, nz = paneles_que_caben(dx, dz)
+        extra += paneles_techo(cx, cy, cz, dx, dz, nx, nz)
 
-
-def tower_block():
+    color = "0.72 0.7 0.66" if not solar else "0.75 0.74 0.7"
     return f"""
-DEF TOWER Solid {{
-  translation {KENNEDY_X_OFFSET} 0 0
+Transform {{
+  translation {cx:.3f} {base:.3f} {cz:.3f}
   children [
     Shape {{
-      appearance PBRAppearance {{ baseColor 0.3 0.3 0.3 metalness 0.7 roughness 0.4 }}
-      geometry Cylinder {{ height 9 radius 0.35 }}
+      appearance PBRAppearance {{
+        baseColor {color}
+        roughness 0.92
+      }}
+      geometry Box {{
+        size {dx:.3f} {ALTURA_EDIFICIO_REAL} {dz:.3f}
+      }}
     }}
-    Transform {{
-      translation 0 0 4.6
+  ]
+}}{extra}
+"""
+
+
+def torre():
+    # Torre de la red publica en el centro del mapa (Boxes: no dependen del
+    # eje del cilindro). Coordenadas locales: y = altura.
+    return """
+Transform {
+  translation 0 7.1 0
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.3 0.3 0.3 metalness 0.7 roughness 0.4 }
+      geometry Box { size 0.6 9 0.6 }
+    }
+    Transform {
+      translation 0 4.6 0
       children [
-        Shape {{
-          appearance PBRAppearance {{ baseColor 0.3 0.3 0.3 metalness 0.7 roughness 0.4 }}
-          geometry Box {{ size 3.2 0.2 0.2 }}
-        }}
+        Shape {
+          appearance PBRAppearance { baseColor 0.3 0.3 0.3 metalness 0.7 roughness 0.4 }
+          geometry Box { size 3.2 0.2 0.2 }
+        }
       ]
-    }}
-    Transform {{
-      translation 0 0 5.1
+    }
+    Transform {
+      translation 0 5.2 0
       children [
-        DEF TOWER_LIGHT Shape {{
-          appearance DEF TOWER_LIGHT_APP PBRAppearance {{
+        Shape {
+          appearance DEF TOWER_LIGHT_APP PBRAppearance {
             baseColor 0.2 0.2 0.2
             emissiveColor 0 0 0
-          }}
-          geometry Sphere {{ radius 0.25 }}
-        }}
+            emissiveIntensity 3
+          }
+          geometry Sphere { radius 0.4 }
+        }
       ]
-    }}
+    }
   ]
-  name "torre_electrica_inestable"
-  boundingObject Cylinder {{ height 9 radius 0.35 }}
-}}
+}
 """
 
 
 def build_world():
-    global _color_counter
-    _color_counter = 0
     header = """#VRML_SIM R2023b utf8
 
 WorldInfo {
   info [
-    "Simulacion: microrred solar de respaldo para el barrio Kennedy - Cienaga, Magdalena"
-    "Zona sin panel solar: se queda sin luz en cada corte (situacion actual)"
-    "Zona con panel solar de respaldo: mantiene la luz durante el corte (propuesta)"
+    "Simulacion: microrred solar de respaldo sobre el mapa real de Cienaga, Magdalena"
+    "Edificios sin panel solar: se quedan sin luz en cada corte (situacion actual)"
+    "Edificios con panel solar y bateria: mantienen la luz durante el corte (propuesta)"
   ]
-  title "Barrio Kennedy - Respaldo Solar ante Cortes de Luz"
+  title "Cienaga - Respaldo Solar ante Cortes de Luz"
   basicTimeStep 32
-  contactProperties [
-  ]
 }
 Viewpoint {
-  orientation -0.2 0.05 0.98 1.45
-  position @@OFFX@@ -42 27
+  orientation -0.336 0.336 0.880 1.6985
+  position 0 -95 85
   exposure 1
 }
 Background {
@@ -271,15 +226,9 @@ DirectionalLight {
   intensity 2.5
   castShadows TRUE
 }
-PointLight {
-  location 0 0 6
-  intensity 2
-  radius 15
-  attenuation 0 0 1
-}
 
 DEF GROUND Solid {
-  translation 25 0 0
+  translation 0 0 -0.05
   children [
     Shape {
       appearance PBRAppearance {
@@ -287,7 +236,7 @@ DEF GROUND Solid {
         roughness 1
       }
       geometry Plane {
-        size 260 140
+        size 220 180
       }
     }
   ]
@@ -295,8 +244,8 @@ DEF GROUND Solid {
 }
 
 DEF MAPA_CIENAGA_REAL Solid {
-  translation 0 0 -2.26
-  rotation 1 0 0 1.5708
+  translation @@T@@
+  rotation @@R@@
   children [
     Shape {
       appearance PBRAppearance {
@@ -312,45 +261,39 @@ DEF MAPA_CIENAGA_REAL Solid {
   ]
   name "mapa_real_cienaga_cad"
 }
-
-DEF CALLE Solid {
-  translation @@OFFX@@ 0 0.02
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.25 0.25 0.25
-        roughness 0.9
-      }
-      geometry Plane {
-        size 4 32
-      }
-    }
-    Transform {
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.25 0.25 0.25
-            roughness 0.9
-          }
-          geometry Plane {
-            size 40 4
-          }
-        }
-      ]
-    }
-  ]
-  name "calle_kennedy"
-}
 """
-    header = header.replace("@@OFFX@@", str(KENNEDY_X_OFFSET))
+    header = header.replace("@@T@@", MAPA_TRANSLATION).replace("@@R@@", MAPA_ROTATION)
 
-    body = tower_block()
-    barrio_info = []
-    for nombre, prefijo, cx, cy, tiene_solar in BARRIOS:
-        block, defs = barrio_block(nombre, prefijo, cx, cy, tiene_solar)
-        body += block
-        barrio_info.append((nombre, prefijo, defs, tiene_solar))
+    _ventana_counter["RSOL"] = 0
+    _ventana_counter["RNOS"] = 0
+    hijos = torre()
+    n_solar = n_sin = 0
+    idx_elegible = 0
+    for (cx, cy, cz, dx, dz) in EDIFICIOS_REALES:
+        if dx < 0.8 or dz < 0.8:
+            continue
+        nx, nz = paneles_que_caben(dx, dz)
+        puede = nx >= 1 and nz >= 1
+        if puede:
+            solar = (not COMPARAR_CON_Y_SIN_SOLAR) or (idx_elegible % 2 == 0)
+            idx_elegible += 1
+        else:
+            solar = False
+        hijos += edificio(cx, cy, cz, dx, dz, solar)
+        if solar:
+            n_solar += 1
+        else:
+            n_sin += 1
 
+    edificios = f"""
+DEF EDIFICIOS_MAPA_REAL Solid {{
+  translation {MAPA_TRANSLATION}
+  rotation {MAPA_ROTATION}
+  children [{hijos}
+  ]
+  name "edificios_mapa_real"
+}}
+"""
     supervisor = """
 DEF GRID_SUPERVISOR Robot {
   translation 0 0 0.5
@@ -371,15 +314,16 @@ DEF GRID_SUPERVISOR Robot {
   supervisor TRUE
 }
 """
-
-    world_text = header + body + supervisor
-    return world_text, barrio_info
+    return header + edificios + supervisor, n_solar, n_sin
 
 
 if __name__ == "__main__":
-    text, info = build_world()
-    with open("/home/claude/cienaga_solar_sim/worlds/cienaga_microgrid.wbt", "w", encoding="utf-8") as f:
+    text, n_solar, n_sin = build_world()
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       "worlds", "cienaga_microgrid.wbt")
+    with open(out, "w", encoding="utf-8") as f:
         f.write(text)
-    print("Mundo generado. Barrios:")
-    for nombre, prefijo, defs, solar in info:
-        print(f"  {nombre} ({prefijo}) solar={solar} casas={defs}")
+    print(f"Mundo generado: {out}")
+    print(f"Edificios con panel solar: {n_solar}")
+    print(f"Edificios sin panel solar: {n_sin}")
+    print(f"Ventanas con solar: {_ventana_counter['RSOL']}, sin solar: {_ventana_counter['RNOS']}")
