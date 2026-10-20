@@ -14,6 +14,12 @@ Magdalena. Todo se simula sobre el **mapa real** (levantamiento CAD) de la zona.
   - **16 sin panel solar**: se **apagan** por completo en cada corte.
 - Una **torre de la red publica** en el centro del mapa, con una luz que
   parpadea en rojo durante los cortes.
+- La **bandera de Cienaga** (dos franjas horizontales iguales: amarillo arriba,
+  verde abajo) ondeando en un asta de 14 m en la plazoleta libre del centro del
+  mapa, a la izquierda de la torre. Esta hecha de 16 franjas verticales que el
+  controlador mueve en cada paso con una onda (se cambia la posicion en
+  `FLAG_X`, `FLAG_Z`, `FLAG_Y` de `gen_world.py`; el movimiento se ajusta con
+  `WAVE_AMP` y `WAVE_SPEED` en el controlador).
 - Dos pantallas superpuestas (overlay) en la vista 3D:
   - **hud**: estado de la red, estado de cada grupo y barra de bateria.
   - **cronograma**: cronograma de 3 meses (12 semanas) en vivo, sincronizado con
@@ -73,16 +79,24 @@ En `gen_world.py` (luego correr `python3 gen_world.py`):
 
 ## Publicar en webots.cloud
 
-El proyecto incluye `webots.yaml` (`type: demo`, `publish: true`) y un
-`Dockerfile`. Subir la carpeta a un repositorio de GitHub y registrarlo en
-https://webots.cloud/demo.
+1. Crear un repositorio **publico** en GitHub y subir el **contenido** de la
+   carpeta `cienaga_solar_sim` en la raiz del repo (que `worlds/`,
+   `controllers/` y `webots.yaml` queden en la raiz, no dentro de otra carpeta).
+2. Ir a https://webots.cloud/demo e iniciar sesion.
+3. Agregar la demo pegando la URL **del archivo del mundo** (no la del repo ni un zip), por ejemplo:
+   `https://github.com/USUARIO/REPO/blob/main/worlds/cienaga_microgrid.wbt`
+4. `webots.yaml` ya esta listo (`type: demo`, `publish: true`). No se incluye
+   `Dockerfile` a proposito: sin el, webots.cloud usa el suyo por defecto.
+
+Notas: la simulacion corre en el servidor de webots.cloud en modo streaming,
+asi que la primera carga puede tardar (el mapa 3D pesa ~1.8 MB). Si falla,
+revisar los mensajes de error que muestra la pagina de la demo.
 
 ## Estructura
 
 ```
 cienaga_solar_sim/
 ├── webots.yaml
-├── Dockerfile
 ├── README.md
 ├── gen_world.py                  # genera worlds/cienaga_microgrid.wbt
 ├── worlds/

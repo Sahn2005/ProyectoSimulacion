@@ -10,6 +10,7 @@ Controlador supervisor de la microrred solar sobre el mapa real de Cienaga.
     el reloj de la simulacion.
 """
 
+import math
 from controller import Supervisor
 
 TIME_STEP = 32
@@ -67,9 +68,45 @@ def buscar_ventanas(grupo):
     return campos
 
 
+
+# ---------------------------------------------------------------------------
+# Bandera de Cienaga ondeando: cada franja vertical se desplaza en profundidad
+# con una onda que viaja desde el asta hacia la punta (la amplitud crece con la
+# distancia al asta) y se inclina siguiendo la pendiente de la onda.
+# Los parametros de geometria deben coincidir con gen_world.py.
+# ---------------------------------------------------------------------------
+FLAG_STRIPS = 16
+FLAG_W = 7.5
+FLAG_Z = -3.0
+WAVE_AMP = 0.7        # metros
+WAVE_SPEED = 4.0      # rad/s
+WAVE_LENGTHS = 1.3    # ondas a lo largo de la bandera
+
+franjas = []
+for _i in range(FLAG_STRIPS):
+    _n = supervisor.getFromDef(f"FLAG_STRIP_{_i}")
+    if _n is not None:
+        franjas.append((_i, _n.getField("translation"), _n.getField("rotation")))
+_flag_x = {}
+for _i, _tr, _ro in franjas:
+    _flag_x[_i] = _tr.getSFVec3f()[0]
+_flag_y = franjas[0][1].getSFVec3f()[1] if franjas else 0.0
+
+
+def ondear_bandera(t):
+    for i, tr, ro in franjas:
+        s = (i + 0.5) / FLAG_STRIPS
+        fase = 2 * math.pi * WAVE_LENGTHS * s - WAVE_SPEED * t
+        dz = WAVE_AMP * s * math.sin(fase)
+        # d(dz)/dx con x = s * FLAG_W
+        pendiente = WAVE_AMP * (math.sin(fase) + s * 2 * math.pi * WAVE_LENGTHS * math.cos(fase)) / FLAG_W
+        tr.setSFVec3f([_flag_x[i], _flag_y, FLAG_Z + dz])
+        ro.setSFRotation([0, 1, 0, -math.atan(pendiente)])
+
 ventanas_sin_solar = buscar_ventanas("RNOS")
 ventanas_con_solar = buscar_ventanas("RSOL")
 
+print(f"[grid_supervisor] franjas de bandera: {len(franjas)}")
 print(f"[grid_supervisor] ventanas sin solar: {len(ventanas_sin_solar)}, "
       f"con solar: {len(ventanas_con_solar)}, torre: {'ok' if tower_field else 'NO ENCONTRADA'}")
 if hud is None or cronograma_display is None:
@@ -203,6 +240,9 @@ while supervisor.step(TIME_STEP) != -1:
         else:
             parpadeo = int(reloj_proyecto * 4) % 2 == 0
             tower_field.setSFColor(list(COLOR_TOWER_FAIL) if parpadeo else list(COLOR_OFF))
+
+    # --- bandera ondeando ---
+    ondear_bandera(reloj_proyecto)
 
     # --- pantallas (cada 3 pasos para no recargar la simulacion) ---
     if paso % 3 == 0:

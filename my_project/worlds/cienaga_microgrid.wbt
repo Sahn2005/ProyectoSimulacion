@@ -97,6 +97,392 @@ Transform {
 }
 
 Transform {
+  translation -14.0 9.680 -3.0
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.75 0.75 0.78 metalness 0.8 roughness 0.35 }
+      geometry Box { size 0.3 14.0 0.3 }
+    }
+  ]
+}
+Transform {
+  translation -14.0 16.930 -3.0
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.95 0.75 0.1 metalness 0.8 roughness 0.3 }
+      geometry Sphere { radius 0.35 }
+    }
+  ]
+}
+DEF FLAG_STRIP_0 Transform {
+  translation -13.616 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_1 Transform {
+  translation -13.147 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_2 Transform {
+  translation -12.678 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_3 Transform {
+  translation -12.209 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_4 Transform {
+  translation -11.741 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_5 Transform {
+  translation -11.272 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_6 Transform {
+  translation -10.803 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_7 Transform {
+  translation -10.334 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_8 Transform {
+  translation -9.866 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_9 Transform {
+  translation -9.397 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_10 Transform {
+  translation -8.928 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_11 Transform {
+  translation -8.459 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_12 Transform {
+  translation -7.991 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_13 Transform {
+  translation -7.522 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_14 Transform {
+  translation -7.053 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+DEF FLAG_STRIP_15 Transform {
+  translation -6.584 0 -3.0
+  children [
+    Transform {
+      translation 0 15.030 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+    Transform {
+      translation 0 12.530 0
+      children [
+        Shape {
+          appearance PBRAppearance { baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }
+          geometry Box { size 0.516 2.500 0.04 }
+        }
+      ]
+    }
+  ]
+}
+Transform {
   translation -54.620 4.410 15.580
   children [
     Shape {

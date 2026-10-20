@@ -199,6 +199,73 @@ Transform {
 """
 
 
+# ---------------------------------------------------------------------------
+# Bandera de Cienaga (dos franjas horizontales iguales: amarillo arriba,
+# verde abajo). Va en la plazoleta libre del centro del mapa, a la izquierda
+# de la torre, donde se ve bien desde la camara inicial y no choca con
+# ningun edificio. Se compone de franjas verticales que el controlador mueve
+# en cada paso para que ondee. FLAG_Y es la altura del terreno en ese punto.
+# ---------------------------------------------------------------------------
+FLAG_X, FLAG_Z, FLAG_Y = -14.0, -3.0, 2.68
+FLAG_POLE_H = 14.0
+FLAG_W, FLAG_H = 7.5, 5.0          # proporcion 3:2
+FLAG_STRIPS = 16
+
+
+def bandera():
+    w = FLAG_W / FLAG_STRIPS
+    y_top = FLAG_Y + FLAG_POLE_H - 0.4          # borde superior de la tela
+    y_mid = y_top - FLAG_H / 4.0
+    y_bot = y_top - 3.0 * FLAG_H / 4.0
+    x_hoist = FLAG_X + 0.15
+    out = f"""
+Transform {{
+  translation {FLAG_X} {FLAG_Y + FLAG_POLE_H / 2:.3f} {FLAG_Z}
+  children [
+    Shape {{
+      appearance PBRAppearance {{ baseColor 0.75 0.75 0.78 metalness 0.8 roughness 0.35 }}
+      geometry Box {{ size 0.3 {FLAG_POLE_H} 0.3 }}
+    }}
+  ]
+}}
+Transform {{
+  translation {FLAG_X} {FLAG_Y + FLAG_POLE_H + 0.25:.3f} {FLAG_Z}
+  children [
+    Shape {{
+      appearance PBRAppearance {{ baseColor 0.95 0.75 0.1 metalness 0.8 roughness 0.3 }}
+      geometry Sphere {{ radius 0.35 }}
+    }}
+  ]
+}}"""
+    for i in range(FLAG_STRIPS):
+        cx = x_hoist + (i + 0.5) * w
+        out += f"""
+DEF FLAG_STRIP_{i} Transform {{
+  translation {cx:.3f} 0 {FLAG_Z}
+  children [
+    Transform {{
+      translation 0 {y_mid:.3f} 0
+      children [
+        Shape {{
+          appearance PBRAppearance {{ baseColor 0.99 0.82 0.09 emissiveColor 0.35 0.28 0.03 roughness 0.8 }}
+          geometry Box {{ size {w * 1.1:.3f} {FLAG_H / 2:.3f} 0.04 }}
+        }}
+      ]
+    }}
+    Transform {{
+      translation 0 {y_bot:.3f} 0
+      children [
+        Shape {{
+          appearance PBRAppearance {{ baseColor 0.0 0.55 0.2 emissiveColor 0.0 0.18 0.06 roughness 0.8 }}
+          geometry Box {{ size {w * 1.1:.3f} {FLAG_H / 2:.3f} 0.04 }}
+        }}
+      ]
+    }}
+  ]
+}}"""
+    return out
+
+
 def build_world():
     header = """#VRML_SIM R2023b utf8
 
@@ -266,7 +333,7 @@ DEF MAPA_CIENAGA_REAL Solid {
 
     _ventana_counter["RSOL"] = 0
     _ventana_counter["RNOS"] = 0
-    hijos = torre()
+    hijos = torre() + bandera()
     n_solar = n_sin = 0
     idx_elegible = 0
     for (cx, cy, cz, dx, dz) in EDIFICIOS_REALES:
