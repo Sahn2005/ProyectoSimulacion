@@ -14,15 +14,16 @@ Viewpoint {
   position 0 -95 85
   exposure 1
 }
-Background {
+DEF CIELO Background {
   skyColor [
     0.55 0.75 0.95
   ]
 }
-DirectionalLight {
+DEF SOL DirectionalLight {
   direction 0.3 -0.4 -0.9
   intensity 2.5
-  castShadows TRUE
+  ambientIntensity 0.3
+  castShadows FALSE
 }
 
 DEF GROUND Solid {
@@ -47,8 +48,8 @@ DEF MAPA_CIENAGA_REAL Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.85 0.85 0.85
-        roughness 0.9
+        baseColor 0.27 0.27 0.29
+        roughness 0.95
       }
       geometry Mesh {
         url [
@@ -483,15 +484,1909 @@ DEF FLAG_STRIP_15 Transform {
   ]
 }
 Transform {
+  translation 70.41 2.21 -26.28
+  children [
+    Transform {
+      translation 0 1.03 0
+      children [ Shape { appearance DEF TRONCO_APP PBRAppearance { baseColor 0.35 0.22 0.12 roughness 1 } geometry Box { size 0.51 2.06 0.51 } } ]
+    }
+    Transform {
+      translation 0 3.42 0
+      children [ Shape { appearance DEF HOJA_0_APP PBRAppearance { baseColor 0.12 0.42 0.14 roughness 1 } geometry Sphere { radius 1.94 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.07 4.68 0.39
+      children [ Shape { appearance DEF HOJA_0_APP PBRAppearance { baseColor 0.12 0.42 0.14 roughness 1 } geometry Sphere { radius 1.36 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 35.17 2.21 68.95
+  children [
+    Transform {
+      translation 0 1.11 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.56 2.23 0.56 } } ]
+    }
+    Transform {
+      translation 0 3.70 0
+      children [ Shape { appearance DEF HOJA_1_APP PBRAppearance { baseColor 0.2 0.5 0.15 roughness 1 } geometry Sphere { radius 2.10 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.16 5.06 0.42
+      children [ Shape { appearance DEF HOJA_1_APP PBRAppearance { baseColor 0.2 0.5 0.15 roughness 1 } geometry Sphere { radius 1.47 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -67.11 2.21 -20.78
+  children [
+    Transform {
+      translation 0 0.89 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.44 1.77 0.44 } } ]
+    }
+    Transform {
+      translation 0 2.94 0
+      children [ Shape { appearance DEF HOJA_2_APP PBRAppearance { baseColor 0.08 0.35 0.18 roughness 1 } geometry Sphere { radius 1.67 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.92 4.03 0.33
+      children [ Shape { appearance DEF HOJA_2_APP PBRAppearance { baseColor 0.08 0.35 0.18 roughness 1 } geometry Sphere { radius 1.17 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -69.85 2.21 -37.92
+  children [
+    Transform {
+      translation 0 3.51 0
+      children [ Shape { appearance DEF TRONCO_PALMA_APP PBRAppearance { baseColor 0.45 0.34 0.22 roughness 1 } geometry Box { size 0.33 7.03 0.33 } } ]
+    }
+    Transform {
+      translation 0 7.03 0
+      children [
+        Transform {
+          rotation 0 1 0 2.515
+          children [
+            Transform {
+              translation 1.22 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance DEF FRONDA_APP PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 } geometry Box { size 2.62 0.06 0.52 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.562
+          children [
+            Transform {
+              translation 1.22 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance DEF FRONDA_APP PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 } geometry Box { size 2.62 0.06 0.52 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.609
+          children [
+            Transform {
+              translation 1.22 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance DEF FRONDA_APP PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 } geometry Box { size 2.62 0.06 0.52 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.656
+          children [
+            Transform {
+              translation 1.22 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance DEF FRONDA_APP PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 } geometry Box { size 2.62 0.06 0.52 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.704
+          children [
+            Transform {
+              translation 1.22 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance DEF FRONDA_APP PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 } geometry Box { size 2.62 0.06 0.52 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 7.751
+          children [
+            Transform {
+              translation 1.22 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance DEF FRONDA_APP PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 } geometry Box { size 2.62 0.06 0.52 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation -73.05 2.21 50.43
+  children [
+    Transform {
+      translation 0 0.88 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.44 1.77 0.44 } } ]
+    }
+    Transform {
+      translation 0 2.94 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.67 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.92 4.02 0.33
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.17 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 69.97 2.21 42.00
+  children [
+    Transform {
+      translation 0 1.06 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.53 2.11 0.53 } } ]
+    }
+    Transform {
+      translation 0 3.51 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.99 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.10 4.80 0.40
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.40 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -40.95 2.21 68.32
+  children [
+    Transform {
+      translation 0 1.16 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.58 2.33 0.58 } } ]
+    }
+    Transform {
+      translation 0 3.87 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 2.20 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.21 5.29 0.44
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.54 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -24.74 2.21 60.73
+  children [
+    Transform {
+      translation 0 4.41 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.41 8.82 0.41 } } ]
+    }
+    Transform {
+      translation 0 8.82 0
+      children [
+        Transform {
+          rotation 0 1 0 0.083
+          children [
+            Transform {
+              translation 1.53 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.29 0.06 0.65 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 1.130
+          children [
+            Transform {
+              translation 1.53 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.29 0.06 0.65 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.177
+          children [
+            Transform {
+              translation 1.53 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.29 0.06 0.65 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.225
+          children [
+            Transform {
+              translation 1.53 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.29 0.06 0.65 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.272
+          children [
+            Transform {
+              translation 1.53 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.29 0.06 0.65 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.319
+          children [
+            Transform {
+              translation 1.53 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.29 0.06 0.65 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 75.87 2.21 -4.84
+  children [
+    Transform {
+      translation 0 1.02 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.51 2.04 0.51 } } ]
+    }
+    Transform {
+      translation 0 3.39 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.93 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.06 4.64 0.39
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.35 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -75.34 2.21 -48.21
+  children [
+    Transform {
+      translation 0 0.96 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.48 1.92 0.48 } } ]
+    }
+    Transform {
+      translation 0 3.18 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.81 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.00 4.36 0.36
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.27 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -9.73 2.21 65.14
+  children [
+    Transform {
+      translation 0 0.93 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.47 1.87 0.47 } } ]
+    }
+    Transform {
+      translation 0 3.10 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.76 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.97 4.25 0.35
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.23 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -45.46 2.21 -59.22
+  children [
+    Transform {
+      translation 0 3.38 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.32 6.77 0.32 } } ]
+    }
+    Transform {
+      translation 0 6.77 0
+      children [
+        Transform {
+          rotation 0 1 0 2.777
+          children [
+            Transform {
+              translation 1.17 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.53 0.06 0.50 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.824
+          children [
+            Transform {
+              translation 1.17 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.53 0.06 0.50 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.871
+          children [
+            Transform {
+              translation 1.17 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.53 0.06 0.50 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.919
+          children [
+            Transform {
+              translation 1.17 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.53 0.06 0.50 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.966
+          children [
+            Transform {
+              translation 1.17 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.53 0.06 0.50 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 8.013
+          children [
+            Transform {
+              translation 1.17 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.53 0.06 0.50 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 65.67 2.21 6.09
+  children [
+    Transform {
+      translation 0 0.85 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.43 1.70 0.43 } } ]
+    }
+    Transform {
+      translation 0 2.83 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.61 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.88 3.87 0.32
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.12 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 66.29 2.21 30.42
+  children [
+    Transform {
+      translation 0 0.96 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.48 1.92 0.48 } } ]
+    }
+    Transform {
+      translation 0 3.19 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.81 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.00 4.36 0.36
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.27 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -67.52 2.21 -51.68
+  children [
+    Transform {
+      translation 0 0.84 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.42 1.67 0.42 } } ]
+    }
+    Transform {
+      translation 0 2.78 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.58 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.87 3.81 0.32
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.11 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -60.15 2.21 61.22
+  children [
+    Transform {
+      translation 0 3.63 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.34 7.26 0.34 } } ]
+    }
+    Transform {
+      translation 0 7.26 0
+      children [
+        Transform {
+          rotation 0 1 0 1.023
+          children [
+            Transform {
+              translation 1.26 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.71 0.06 0.53 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.070
+          children [
+            Transform {
+              translation 1.26 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.71 0.06 0.53 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.117
+          children [
+            Transform {
+              translation 1.26 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.71 0.06 0.53 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.164
+          children [
+            Transform {
+              translation 1.26 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.71 0.06 0.53 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.212
+          children [
+            Transform {
+              translation 1.26 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.71 0.06 0.53 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.259
+          children [
+            Transform {
+              translation 1.26 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.71 0.06 0.53 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 9.37 2.21 68.26
+  children [
+    Transform {
+      translation 0 1.04 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.52 2.09 0.52 } } ]
+    }
+    Transform {
+      translation 0 3.47 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.97 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.09 4.75 0.39
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.38 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -71.60 2.21 -60.52
+  children [
+    Transform {
+      translation 0 1.09 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.55 2.19 0.55 } } ]
+    }
+    Transform {
+      translation 0 3.63 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 2.06 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.14 4.97 0.41
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.44 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 72.41 2.21 -39.44
+  children [
+    Transform {
+      translation 0 0.81 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.40 1.61 0.40 } } ]
+    }
+    Transform {
+      translation 0 2.68 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.52 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.84 3.67 0.30
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.07 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -74.38 2.21 -22.08
+  children [
+    Transform {
+      translation 0 3.46 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.32 6.92 0.32 } } ]
+    }
+    Transform {
+      translation 0 6.92 0
+      children [
+        Transform {
+          rotation 0 1 0 0.733
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 1.781
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.828
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.875
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.922
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.969
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 71.92 2.21 60.46
+  children [
+    Transform {
+      translation 0 1.12 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.56 2.24 0.56 } } ]
+    }
+    Transform {
+      translation 0 3.72 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 2.12 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.16 5.10 0.42
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.48 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -67.73 2.21 -8.88
+  children [
+    Transform {
+      translation 0 1.14 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.57 2.28 0.57 } } ]
+    }
+    Transform {
+      translation 0 3.79 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 2.15 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.18 5.19 0.43
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.51 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -40.90 2.21 -68.99
+  children [
+    Transform {
+      translation 0 0.82 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.41 1.64 0.41 } } ]
+    }
+    Transform {
+      translation 0 2.72 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.55 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.85 3.73 0.31
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.08 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 22.05 2.21 -61.57
+  children [
+    Transform {
+      translation 0 3.47 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.32 6.95 0.32 } } ]
+    }
+    Transform {
+      translation 0 6.95 0
+      children [
+        Transform {
+          rotation 0 1 0 1.190
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.237
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.284
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.331
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.379
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.426
+          children [
+            Transform {
+              translation 1.20 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.59 0.06 0.51 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 5.75 2.21 60.98
+  children [
+    Transform {
+      translation 0 0.90 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.45 1.80 0.45 } } ]
+    }
+    Transform {
+      translation 0 2.99 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.70 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.94 4.10 0.34
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.19 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -71.27 2.21 19.97
+  children [
+    Transform {
+      translation 0 0.80 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.40 1.60 0.40 } } ]
+    }
+    Transform {
+      translation 0 2.66 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.51 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.83 3.64 0.30
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.06 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 40.62 2.21 63.00
+  children [
+    Transform {
+      translation 0 0.78 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.39 1.55 0.39 } } ]
+    }
+    Transform {
+      translation 0 2.58 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.46 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.81 3.53 0.29
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.03 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 49.58 2.21 -59.43
+  children [
+    Transform {
+      translation 0 3.69 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.34 7.39 0.34 } } ]
+    }
+    Transform {
+      translation 0 7.39 0
+      children [
+        Transform {
+          rotation 0 1 0 0.242
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.76 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 1.289
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.76 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.337
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.76 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.384
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.76 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.431
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.76 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.478
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.76 0.06 0.54 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 65.36 2.21 -15.83
+  children [
+    Transform {
+      translation 0 1.07 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.54 2.15 0.54 } } ]
+    }
+    Transform {
+      translation 0 3.57 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 2.03 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.12 4.89 0.41
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.42 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -2.09 2.21 60.65
+  children [
+    Transform {
+      translation 0 0.99 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.50 1.98 0.50 } } ]
+    }
+    Transform {
+      translation 0 3.29 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.87 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.03 4.51 0.37
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.31 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -58.50 2.21 -62.19
+  children [
+    Transform {
+      translation 0 0.93 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.47 1.86 0.47 } } ]
+    }
+    Transform {
+      translation 0 3.09 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.76 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.97 4.23 0.35
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.23 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -23.52 2.21 -61.66
+  children [
+    Transform {
+      translation 0 3.69 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.34 7.38 0.34 } } ]
+    }
+    Transform {
+      translation 0 7.38 0
+      children [
+        Transform {
+          rotation 0 1 0 2.456
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.503
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.550
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.598
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.645
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 7.692
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation -58.36 2.21 68.33
+  children [
+    Transform {
+      translation 0 0.80 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.40 1.60 0.40 } } ]
+    }
+    Transform {
+      translation 0 2.67 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.52 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.83 3.65 0.30
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.06 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 52.92 2.21 64.71
+  children [
+    Transform {
+      translation 0 1.07 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.54 2.14 0.54 } } ]
+    }
+    Transform {
+      translation 0 3.56 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 2.02 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.11 4.87 0.40
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.42 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -52.96 2.21 -66.97
+  children [
+    Transform {
+      translation 0 0.97 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.48 1.94 0.48 } } ]
+    }
+    Transform {
+      translation 0 3.22 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.83 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.01 4.41 0.37
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.28 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -72.98 2.21 63.66
+  children [
+    Transform {
+      translation 0 4.22 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.39 8.44 0.39 } } ]
+    }
+    Transform {
+      translation 0 8.44 0
+      children [
+        Transform {
+          rotation 0 1 0 0.232
+          children [
+            Transform {
+              translation 1.46 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.15 0.06 0.62 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 1.279
+          children [
+            Transform {
+              translation 1.46 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.15 0.06 0.62 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.327
+          children [
+            Transform {
+              translation 1.46 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.15 0.06 0.62 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.374
+          children [
+            Transform {
+              translation 1.46 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.15 0.06 0.62 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.421
+          children [
+            Transform {
+              translation 1.46 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.15 0.06 0.62 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.468
+          children [
+            Transform {
+              translation 1.46 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.15 0.06 0.62 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 72.37 2.21 15.66
+  children [
+    Transform {
+      translation 0 1.00 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.50 2.00 0.50 } } ]
+    }
+    Transform {
+      translation 0 3.32 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.89 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.04 4.55 0.38
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.32 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 73.04 2.21 26.24
+  children [
+    Transform {
+      translation 0 0.78 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.39 1.56 0.39 } } ]
+    }
+    Transform {
+      translation 0 2.60 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.48 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.81 3.56 0.30
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.03 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -70.16 2.21 -29.66
+  children [
+    Transform {
+      translation 0 0.83 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.41 1.66 0.41 } } ]
+    }
+    Transform {
+      translation 0 2.76 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.57 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.86 3.78 0.31
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.10 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -9.67 2.21 -60.37
+  children [
+    Transform {
+      translation 0 3.50 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.33 7.01 0.33 } } ]
+    }
+    Transform {
+      translation 0 7.01 0
+      children [
+        Transform {
+          rotation 0 1 0 0.015
+          children [
+            Transform {
+              translation 1.21 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.62 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 1.062
+          children [
+            Transform {
+              translation 1.21 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.62 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.109
+          children [
+            Transform {
+              translation 1.21 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.62 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.157
+          children [
+            Transform {
+              translation 1.21 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.62 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.204
+          children [
+            Transform {
+              translation 1.21 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.62 0.06 0.51 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.251
+          children [
+            Transform {
+              translation 1.21 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.62 0.06 0.51 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 74.35 2.21 -57.95
+  children [
+    Transform {
+      translation 0 0.90 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.45 1.79 0.45 } } ]
+    }
+    Transform {
+      translation 0 2.97 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.69 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.93 4.07 0.34
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.18 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 72.31 2.21 51.40
+  children [
+    Transform {
+      translation 0 0.79 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.40 1.58 0.40 } } ]
+    }
+    Transform {
+      translation 0 2.63 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.50 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.82 3.60 0.30
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.05 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -72.26 2.21 -1.51
+  children [
+    Transform {
+      translation 0 1.01 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.50 2.02 0.50 } } ]
+    }
+    Transform {
+      translation 0 3.35 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.91 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.05 4.59 0.38
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.33 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -68.17 2.21 13.35
+  children [
+    Transform {
+      translation 0 4.58 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.43 9.16 0.43 } } ]
+    }
+    Transform {
+      translation 0 9.16 0
+      children [
+        Transform {
+          rotation 0 1 0 1.629
+          children [
+            Transform {
+              translation 1.59 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.42 0.06 0.67 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.676
+          children [
+            Transform {
+              translation 1.59 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.42 0.06 0.67 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.723
+          children [
+            Transform {
+              translation 1.59 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.42 0.06 0.67 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.771
+          children [
+            Transform {
+              translation 1.59 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.42 0.06 0.67 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.818
+          children [
+            Transform {
+              translation 1.59 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.42 0.06 0.67 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.865
+          children [
+            Transform {
+              translation 1.59 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.42 0.06 0.67 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 75.18 2.21 5.30
+  children [
+    Transform {
+      translation 0 1.06 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.53 2.12 0.53 } } ]
+    }
+    Transform {
+      translation 0 3.52 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 2.00 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.10 4.81 0.40
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.40 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -16.15 2.21 -65.99
+  children [
+    Transform {
+      translation 0 0.93 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.46 1.86 0.46 } } ]
+    }
+    Transform {
+      translation 0 3.08 0
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.75 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.96 4.22 0.35
+      children [ Shape { appearance USE HOJA_1_APP geometry Sphere { radius 1.23 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 40.43 2.75 -48.98
+  children [
+    Transform {
+      translation 0 1.09 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.55 2.18 0.55 } } ]
+    }
+    Transform {
+      translation 0 3.62 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 2.06 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.13 4.96 0.41
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.44 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 59.72 2.51 48.45
+  children [
+    Transform {
+      translation 0 3.91 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.36 7.81 0.36 } } ]
+    }
+    Transform {
+      translation 0 7.81 0
+      children [
+        Transform {
+          rotation 0 1 0 2.904
+          children [
+            Transform {
+              translation 1.35 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.92 0.06 0.57 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.951
+          children [
+            Transform {
+              translation 1.35 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.92 0.06 0.57 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.998
+          children [
+            Transform {
+              translation 1.35 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.92 0.06 0.57 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.045
+          children [
+            Transform {
+              translation 1.35 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.92 0.06 0.57 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 7.093
+          children [
+            Transform {
+              translation 1.35 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.92 0.06 0.57 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 8.140
+          children [
+            Transform {
+              translation 1.35 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.92 0.06 0.57 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 29.47 2.76 -51.27
+  children [
+    Transform {
+      translation 0 0.80 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.40 1.61 0.40 } } ]
+    }
+    Transform {
+      translation 0 2.67 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.52 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.84 3.66 0.30
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.06 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 12.13 2.75 -48.64
+  children [
+    Transform {
+      translation 0 0.96 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.48 1.92 0.48 } } ]
+    }
+    Transform {
+      translation 0 3.18 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.81 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.00 4.36 0.36
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.27 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -6.07 2.35 50.53
+  children [
+    Transform {
+      translation 0 0.96 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.48 1.91 0.48 } } ]
+    }
+    Transform {
+      translation 0 3.18 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.81 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.99 4.35 0.36
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.26 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 56.73 2.51 37.39
+  children [
+    Transform {
+      translation 0 4.67 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.44 9.34 0.44 } } ]
+    }
+    Transform {
+      translation 0 9.34 0
+      children [
+        Transform {
+          rotation 0 1 0 2.267
+          children [
+            Transform {
+              translation 1.62 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.49 0.06 0.69 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.315
+          children [
+            Transform {
+              translation 1.62 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.49 0.06 0.69 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.362
+          children [
+            Transform {
+              translation 1.62 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.49 0.06 0.69 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.409
+          children [
+            Transform {
+              translation 1.62 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.49 0.06 0.69 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.456
+          children [
+            Transform {
+              translation 1.62 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.49 0.06 0.69 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 7.503
+          children [
+            Transform {
+              translation 1.62 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.49 0.06 0.69 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 57.40 2.52 24.60
+  children [
+    Transform {
+      translation 0 0.88 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.44 1.76 0.44 } } ]
+    }
+    Transform {
+      translation 0 2.93 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.67 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.92 4.01 0.33
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.17 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 56.94 2.59 -16.43
+  children [
+    Transform {
+      translation 0 0.82 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.41 1.63 0.41 } } ]
+    }
+    Transform {
+      translation 0 2.71 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.54 subdivision 2 } } ]
+    }
+    Transform {
+      translation 0.85 3.71 0.31
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.08 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -58.69 3.19 -45.96
+  children [
+    Transform {
+      translation 0 0.97 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.49 1.95 0.49 } } ]
+    }
+    Transform {
+      translation 0 3.24 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.84 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.01 4.44 0.37
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.29 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -57.19 3.15 -34.82
+  children [
+    Transform {
+      translation 0 4.12 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.38 8.24 0.38 } } ]
+    }
+    Transform {
+      translation 0 8.24 0
+      children [
+        Transform {
+          rotation 0 1 0 0.028
+          children [
+            Transform {
+              translation 1.43 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.08 0.06 0.60 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 1.075
+          children [
+            Transform {
+              translation 1.43 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.08 0.06 0.60 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 2.123
+          children [
+            Transform {
+              translation 1.43 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.08 0.06 0.60 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.170
+          children [
+            Transform {
+              translation 1.43 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.08 0.06 0.60 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.217
+          children [
+            Transform {
+              translation 1.43 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.08 0.06 0.60 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.264
+          children [
+            Transform {
+              translation 1.43 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 3.08 0.06 0.60 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation 55.27 2.69 -39.38
+  children [
+    Transform {
+      translation 0 1.10 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.55 2.21 0.55 } } ]
+    }
+    Transform {
+      translation 0 3.66 0
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 2.08 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.15 5.02 0.42
+      children [ Shape { appearance USE HOJA_0_APP geometry Sphere { radius 1.46 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation -37.31 2.36 50.49
+  children [
+    Transform {
+      translation 0 1.03 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.52 2.06 0.52 } } ]
+    }
+    Transform {
+      translation 0 3.43 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.95 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.07 4.70 0.39
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.36 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 56.21 2.63 -29.43
+  children [
+    Transform {
+      translation 0 1.08 0
+      children [ Shape { appearance USE TRONCO_APP geometry Box { size 0.54 2.16 0.54 } } ]
+    }
+    Transform {
+      translation 0 3.59 0
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 2.04 subdivision 2 } } ]
+    }
+    Transform {
+      translation 1.12 4.92 0.41
+      children [ Shape { appearance USE HOJA_2_APP geometry Sphere { radius 1.43 subdivision 2 } } ]
+    }
+  ]
+}
+Transform {
+  translation 59.11 2.56 -8.33
+  children [
+    Transform {
+      translation 0 3.68 0
+      children [ Shape { appearance USE TRONCO_PALMA_APP geometry Box { size 0.34 7.36 0.34 } } ]
+    }
+    Transform {
+      translation 0 7.36 0
+      children [
+        Transform {
+          rotation 0 1 0 2.697
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.745
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 4.792
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 5.839
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 6.886
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 7.933
+          children [
+            Transform {
+              translation 1.28 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape { appearance USE FRONDA_APP geometry Box { size 2.75 0.06 0.54 } } ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Transform {
+  translation -54.620 2.760 15.580
+  children [
+    Shape {
+      appearance DEF ACERA_APP PBRAppearance { baseColor 0.62 0.61 0.58 roughness 0.92  }
+      geometry Box {
+        size 15.870 0.14 13.450
+      }
+    }
+  ]
+}
+Transform {
   translation -54.620 4.410 15.580
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance DEF PARED_0_APP PBRAppearance { baseColor 0.68 0.66 0.62 roughness 0.92  }
       geometry Box {
         size 14.070 3.4 11.650
+      }
+    }
+  ]
+}
+Transform {
+  translation -54.620 6.185 15.580
+  children [
+    Shape {
+      appearance DEF TECHO_0_APP PBRAppearance { baseColor 0.78 0.78 0.75 roughness 0.92  }
+      geometry Box {
+        size 14.370 0.15 11.950
       }
     }
   ]
@@ -914,15 +2809,34 @@ Transform {
     }
 
 Transform {
+  translation 11.840 2.630 9.800
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 8.250 0.14 13.450
+      }
+    }
+  ]
+}
+Transform {
   translation 11.840 4.280 9.800
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance DEF PARED_1_APP PBRAppearance { baseColor 0.55 0.68 0.78 roughness 0.92  }
       geometry Box {
         size 6.450 3.4 11.650
+      }
+    }
+  ]
+}
+Transform {
+  translation 11.840 6.055 9.800
+  children [
+    Shape {
+      appearance DEF TECHO_1_APP PBRAppearance { baseColor 0.58 0.58 0.60 roughness 0.92 metalness 0.25 }
+      geometry Box {
+        size 6.750 0.15 11.950
       }
     }
   ]
@@ -1089,15 +3003,34 @@ Transform {
     }
 
 Transform {
+  translation -53.770 2.560 40.420
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 24.870 0.14 33.920
+      }
+    }
+  ]
+}
+Transform {
   translation -53.770 4.210 40.420
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance DEF PARED_2_APP PBRAppearance { baseColor 0.80 0.60 0.55 roughness 0.92  }
       geometry Box {
         size 23.070 3.4 32.120
+      }
+    }
+  ]
+}
+Transform {
+  translation -53.770 5.985 40.420
+  children [
+    Shape {
+      appearance DEF TECHO_2_APP PBRAppearance { baseColor 0.78 0.78 0.75 roughness 0.92  }
+      geometry Box {
+        size 23.370 0.15 32.420
       }
     }
   ]
@@ -1616,15 +3549,34 @@ Transform {
     }
 
 Transform {
+  translation 60.500 2.580 6.730
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 2.970 0.14 6.600
+      }
+    }
+  ]
+}
+Transform {
   translation 60.500 4.230 6.730
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance DEF PARED_3_APP PBRAppearance { baseColor 0.63 0.72 0.60 roughness 0.92  }
       geometry Box {
         size 1.170 3.4 4.800
+      }
+    }
+  ]
+}
+Transform {
+  translation 60.500 6.005 6.730
+  children [
+    Shape {
+      appearance DEF TECHO_3_APP PBRAppearance { baseColor 0.58 0.58 0.60 roughness 0.92 metalness 0.25 }
+      geometry Box {
+        size 1.470 0.15 5.100
       }
     }
   ]
@@ -1695,15 +3647,34 @@ Transform {
     }
 
 Transform {
+  translation -20.400 2.720 0.590
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 6.490 0.14 10.540
+      }
+    }
+  ]
+}
+Transform {
   translation -20.400 4.370 0.590
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance DEF PARED_4_APP PBRAppearance { baseColor 0.82 0.74 0.50 roughness 0.92  }
       geometry Box {
         size 4.690 3.4 8.740
+      }
+    }
+  ]
+}
+Transform {
+  translation -20.400 6.145 0.590
+  children [
+    Shape {
+      appearance DEF TECHO_4_APP PBRAppearance { baseColor 0.58 0.58 0.60 roughness 0.92 metalness 0.25 }
+      geometry Box {
+        size 4.990 0.15 9.040
       }
     }
   ]
@@ -1806,15 +3777,34 @@ Transform {
     }
 
 Transform {
+  translation -58.540 2.930 -0.080
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 8.840 0.14 25.970
+      }
+    }
+  ]
+}
+Transform {
   translation -58.540 4.580 -0.080
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance DEF PARED_5_APP PBRAppearance { baseColor 0.72 0.52 0.42 roughness 0.92  }
       geometry Box {
         size 7.040 3.4 24.170
+      }
+    }
+  ]
+}
+Transform {
+  translation -58.540 6.355 -0.080
+  children [
+    Shape {
+      appearance DEF TECHO_5_APP PBRAppearance { baseColor 0.78 0.78 0.75 roughness 0.92  }
+      geometry Box {
+        size 7.340 0.15 24.470
       }
     }
   ]
@@ -2189,15 +4179,34 @@ Transform {
     }
 
 Transform {
+  translation 52.410 2.550 48.120
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 6.490 0.14 12.290
+      }
+    }
+  ]
+}
+Transform {
   translation 52.410 4.200 48.120
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance DEF PARED_6_APP PBRAppearance { baseColor 0.85 0.82 0.75 roughness 0.92  }
       geometry Box {
         size 4.690 3.4 10.490
+      }
+    }
+  ]
+}
+Transform {
+  translation 52.410 5.975 48.120
+  children [
+    Shape {
+      appearance DEF TECHO_6_APP PBRAppearance { baseColor 0.58 0.58 0.60 roughness 0.92 metalness 0.25 }
+      geometry Box {
+        size 4.990 0.15 10.790
       }
     }
   ]
@@ -2332,15 +4341,34 @@ Transform {
     }
 
 Transform {
+  translation -19.680 2.610 16.950
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 17.040 0.14 23.350
+      }
+    }
+  ]
+}
+Transform {
   translation -19.680 4.260 16.950
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_0_APP
       geometry Box {
         size 15.240 3.4 21.550
+      }
+    }
+  ]
+}
+Transform {
+  translation -19.680 6.035 16.950
+  children [
+    Shape {
+      appearance USE TECHO_0_APP
+      geometry Box {
+        size 15.540 0.15 21.850
       }
     }
   ]
@@ -2827,15 +4855,34 @@ Transform {
     }
 
 Transform {
+  translation -30.220 3.070 -52.590
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 8.870 0.14 7.500
+      }
+    }
+  ]
+}
+Transform {
   translation -30.220 4.720 -52.590
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_1_APP
       geometry Box {
         size 7.070 3.4 5.700
+      }
+    }
+  ]
+}
+Transform {
+  translation -30.220 6.495 -52.590
+  children [
+    Shape {
+      appearance USE TECHO_1_APP
+      geometry Box {
+        size 7.370 0.15 6.000
       }
     }
   ]
@@ -2970,15 +5017,34 @@ Transform {
     }
 
 Transform {
+  translation 12.190 2.540 33.330
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 8.250 0.14 9.370
+      }
+    }
+  ]
+}
+Transform {
   translation 12.190 4.190 33.330
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_2_APP
       geometry Box {
         size 6.450 3.4 7.570
+      }
+    }
+  ]
+}
+Transform {
+  translation 12.190 5.965 33.330
+  children [
+    Shape {
+      appearance USE TECHO_2_APP
+      geometry Box {
+        size 6.750 0.15 7.870
       }
     }
   ]
@@ -3209,15 +5275,34 @@ Transform {
     }
 
 Transform {
+  translation -27.080 2.720 2.690
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 11.770 0.14 11.700
+      }
+    }
+  ]
+}
+Transform {
   translation -27.080 4.370 2.690
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_3_APP
       geometry Box {
         size 9.970 3.4 9.900
+      }
+    }
+  ]
+}
+Transform {
+  translation -27.080 6.145 2.690
+  children [
+    Shape {
+      appearance USE TECHO_3_APP
+      geometry Box {
+        size 10.270 0.15 10.200
       }
     }
   ]
@@ -3416,15 +5501,34 @@ Transform {
     }
 
 Transform {
+  translation -60.090 3.070 -14.840
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 3.560 0.14 10.190
+      }
+    }
+  ]
+}
+Transform {
   translation -60.090 4.720 -14.840
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_4_APP
       geometry Box {
         size 1.760 3.4 8.390
+      }
+    }
+  ]
+}
+Transform {
+  translation -60.090 6.495 -14.840
+  children [
+    Shape {
+      appearance USE TECHO_4_APP
+      geometry Box {
+        size 2.060 0.15 8.690
       }
     }
   ]
@@ -3527,15 +5631,34 @@ Transform {
     }
 
 Transform {
+  translation 23.030 2.480 51.770
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 9.670 0.14 8.870
+      }
+    }
+  ]
+}
+Transform {
   translation 23.030 4.130 51.770
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_5_APP
       geometry Box {
         size 7.870 3.4 7.070
+      }
+    }
+  ]
+}
+Transform {
+  translation 23.030 5.905 51.770
+  children [
+    Shape {
+      appearance USE TECHO_5_APP
+      geometry Box {
+        size 8.170 0.15 7.370
       }
     }
   ]
@@ -3814,15 +5937,34 @@ Transform {
     }
 
 Transform {
+  translation 24.450 2.560 34.680
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 12.940 0.14 22.190
+      }
+    }
+  ]
+}
+Transform {
   translation 24.450 4.210 34.680
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_6_APP
       geometry Box {
         size 11.140 3.4 20.390
+      }
+    }
+  ]
+}
+Transform {
+  translation 24.450 5.985 34.680
+  children [
+    Shape {
+      appearance USE TECHO_6_APP
+      geometry Box {
+        size 11.440 0.15 20.690
       }
     }
   ]
@@ -4085,15 +6227,34 @@ Transform {
     }
 
 Transform {
+  translation -16.310 3.000 -53.340
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 45.440 0.14 5.750
+      }
+    }
+  ]
+}
+Transform {
   translation -16.310 4.650 -53.340
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_0_APP
       geometry Box {
         size 43.640 3.4 3.950
+      }
+    }
+  ]
+}
+Transform {
+  translation -16.310 6.425 -53.340
+  children [
+    Shape {
+      appearance USE TECHO_0_APP
+      geometry Box {
+        size 43.940 0.15 4.250
       }
     }
   ]
@@ -4420,15 +6581,34 @@ Transform {
     }
 
 Transform {
+  translation -5.510 2.820 -32.260
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 11.180 0.14 20.440
+      }
+    }
+  ]
+}
+Transform {
   translation -5.510 4.470 -32.260
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_1_APP
       geometry Box {
         size 9.380 3.4 18.640
+      }
+    }
+  ]
+}
+Transform {
+  translation -5.510 6.245 -32.260
+  children [
+    Shape {
+      appearance USE TECHO_1_APP
+      geometry Box {
+        size 9.680 0.15 18.940
       }
     }
   ]
@@ -4691,15 +6871,34 @@ Transform {
     }
 
 Transform {
+  translation 27.320 2.640 -4.070
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 24.660 0.14 16.360
+      }
+    }
+  ]
+}
+Transform {
   translation 27.320 4.290 -4.070
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_2_APP
       geometry Box {
         size 22.860 3.4 14.560
+      }
+    }
+  ]
+}
+Transform {
+  translation 27.320 6.065 -4.070
+  children [
+    Shape {
+      appearance USE TECHO_2_APP
+      geometry Box {
+        size 23.160 0.15 14.860
       }
     }
   ]
@@ -5186,15 +7385,34 @@ Transform {
     }
 
 Transform {
+  translation 12.190 2.480 44.510
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 17.040 0.14 16.940
+      }
+    }
+  ]
+}
+Transform {
   translation 12.190 4.130 44.510
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_3_APP
       geometry Box {
         size 15.240 3.4 15.140
+      }
+    }
+  ]
+}
+Transform {
+  translation 12.190 5.905 44.510
+  children [
+    Shape {
+      appearance USE TECHO_3_APP
+      geometry Box {
+        size 15.540 0.15 15.440
       }
     }
   ]
@@ -5457,15 +7675,34 @@ Transform {
     }
 
 Transform {
+  translation -27.390 2.970 -34.360
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 27.010 0.14 24.520
+      }
+    }
+  ]
+}
+Transform {
   translation -27.390 4.620 -34.360
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_4_APP
       geometry Box {
         size 25.210 3.4 22.720
+      }
+    }
+  ]
+}
+Transform {
+  translation -27.390 6.395 -34.360
+  children [
+    Shape {
+      appearance USE TECHO_4_APP
+      geometry Box {
+        size 25.510 0.15 23.020
       }
     }
   ]
@@ -5984,15 +8221,34 @@ Transform {
     }
 
 Transform {
+  translation 24.970 2.680 -22.470
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 12.940 0.14 20.440
+      }
+    }
+  ]
+}
+Transform {
   translation 24.970 4.330 -22.470
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_5_APP
       geometry Box {
         size 11.140 3.4 18.640
+      }
+    }
+  ]
+}
+Transform {
+  translation 24.970 6.105 -22.470
+  children [
+    Shape {
+      appearance USE TECHO_5_APP
+      geometry Box {
+        size 11.440 0.15 18.940
       }
     }
   ]
@@ -6255,15 +8511,34 @@ Transform {
     }
 
 Transform {
+  translation 15.120 2.600 19.230
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 7.080 0.14 5.880
+      }
+    }
+  ]
+}
+Transform {
   translation 15.120 4.250 19.230
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_6_APP
       geometry Box {
         size 5.280 3.4 4.080
+      }
+    }
+  ]
+}
+Transform {
+  translation 15.120 6.025 19.230
+  children [
+    Shape {
+      appearance USE TECHO_6_APP
+      geometry Box {
+        size 5.580 0.15 4.380
       }
     }
   ]
@@ -6430,15 +8705,34 @@ Transform {
     }
 
 Transform {
+  translation 58.980 2.590 1.410
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 5.900 0.14 8.300
+      }
+    }
+  ]
+}
+Transform {
   translation 58.980 4.240 1.410
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_0_APP
       geometry Box {
         size 4.100 3.4 6.500
+      }
+    }
+  ]
+}
+Transform {
+  translation 58.980 6.015 1.410
+  children [
+    Shape {
+      appearance USE TECHO_0_APP
+      geometry Box {
+        size 4.400 0.15 6.800
       }
     }
   ]
@@ -6541,15 +8835,34 @@ Transform {
     }
 
 Transform {
+  translation 14.910 2.760 -35.550
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 21.730 0.14 19.860
+      }
+    }
+  ]
+}
+Transform {
   translation 14.910 4.410 -35.550
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_1_APP
       geometry Box {
         size 19.930 3.4 18.060
+      }
+    }
+  ]
+}
+Transform {
+  translation 14.910 6.185 -35.550
+  children [
+    Shape {
+      appearance USE TECHO_1_APP
+      geometry Box {
+        size 20.230 0.15 18.360
       }
     }
   ]
@@ -7068,15 +9381,34 @@ Transform {
     }
 
 Transform {
+  translation 18.290 2.540 35.080
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 11.180 0.14 22.770
+      }
+    }
+  ]
+}
+Transform {
   translation 18.290 4.190 35.080
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_2_APP
       geometry Box {
         size 9.380 3.4 20.970
+      }
+    }
+  ]
+}
+Transform {
+  translation 18.290 5.965 35.080
+  children [
+    Shape {
+      appearance USE TECHO_2_APP
+      geometry Box {
+        size 9.680 0.15 21.270
       }
     }
   ]
@@ -7339,15 +9671,34 @@ Transform {
     }
 
 Transform {
+  translation -56.060 2.480 52.700
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 8.340 0.14 6.540
+      }
+    }
+  ]
+}
+Transform {
   translation -56.060 4.130 52.700
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_3_APP
       geometry Box {
         size 6.540 3.4 4.740
+      }
+    }
+  ]
+}
+Transform {
+  translation -56.060 5.905 52.700
+  children [
+    Shape {
+      appearance USE TECHO_3_APP
+      geometry Box {
+        size 6.840 0.15 5.040
       }
     }
   ]
@@ -7514,15 +9865,34 @@ Transform {
     }
 
 Transform {
+  translation -1.170 2.850 -46.120
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 7.660 0.14 7.040
+      }
+    }
+  ]
+}
+Transform {
   translation -1.170 4.500 -46.120
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_4_APP
       geometry Box {
         size 5.860 3.4 5.240
+      }
+    }
+  ]
+}
+Transform {
+  translation -1.170 6.275 -46.120
+  children [
+    Shape {
+      appearance USE TECHO_4_APP
+      geometry Box {
+        size 6.160 0.15 5.540
       }
     }
   ]
@@ -7625,15 +9995,34 @@ Transform {
     }
 
 Transform {
+  translation 43.150 2.570 32.980
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 12.940 0.14 9.950
+      }
+    }
+  ]
+}
+Transform {
   translation 43.150 4.220 32.980
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_5_APP
       geometry Box {
         size 11.140 3.4 8.150
+      }
+    }
+  ]
+}
+Transform {
+  translation 43.150 5.995 32.980
+  children [
+    Shape {
+      appearance USE TECHO_5_APP
+      geometry Box {
+        size 11.440 0.15 8.450
       }
     }
   ]
@@ -7992,15 +10381,34 @@ Transform {
     }
 
 Transform {
+  translation 41.760 2.530 49.320
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 18.960 0.14 14.110
+      }
+    }
+  ]
+}
+Transform {
   translation 41.760 4.180 49.320
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_6_APP
       geometry Box {
         size 17.160 3.4 12.310
+      }
+    }
+  ]
+}
+Transform {
+  translation 41.760 5.955 49.320
+  children [
+    Shape {
+      appearance USE TECHO_6_APP
+      geometry Box {
+        size 17.460 0.15 12.610
       }
     }
   ]
@@ -8295,15 +10703,34 @@ Transform {
     }
 
 Transform {
+  translation 33.310 2.610 16.890
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 22.900 0.14 29.760
+      }
+    }
+  ]
+}
+Transform {
   translation 33.310 4.260 16.890
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_0_APP
       geometry Box {
         size 21.100 3.4 27.960
+      }
+    }
+  ]
+}
+Transform {
+  translation 33.310 6.035 16.890
+  children [
+    Shape {
+      appearance USE TECHO_0_APP
+      geometry Box {
+        size 21.400 0.15 28.260
       }
     }
   ]
@@ -8822,15 +11249,34 @@ Transform {
     }
 
 Transform {
+  translation -25.790 2.810 -10.330
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 18.800 0.14 17.530
+      }
+    }
+  ]
+}
+Transform {
   translation -25.790 4.460 -10.330
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.72 0.7 0.66
-        roughness 0.92
-      }
+      appearance USE PARED_1_APP
       geometry Box {
         size 17.000 3.4 15.730
+      }
+    }
+  ]
+}
+Transform {
+  translation -25.790 6.235 -10.330
+  children [
+    Shape {
+      appearance USE TECHO_1_APP
+      geometry Box {
+        size 17.300 0.15 16.030
       }
     }
   ]
@@ -9125,15 +11571,34 @@ Transform {
     }
 
 Transform {
+  translation -43.930 3.150 -49.860
+  children [
+    Shape {
+      appearance USE ACERA_APP
+      geometry Box {
+        size 11.180 0.14 13.320
+      }
+    }
+  ]
+}
+Transform {
   translation -43.930 4.800 -49.860
   children [
     Shape {
-      appearance PBRAppearance {
-        baseColor 0.75 0.74 0.7
-        roughness 0.92
-      }
+      appearance USE PARED_2_APP
       geometry Box {
         size 9.380 3.4 11.520
+      }
+    }
+  ]
+}
+Transform {
+  translation -43.930 6.575 -49.860
+  children [
+    Shape {
+      appearance USE TECHO_2_APP
+      geometry Box {
+        size 9.680 0.15 11.820
       }
     }
   ]

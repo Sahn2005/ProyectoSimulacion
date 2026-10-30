@@ -5,7 +5,9 @@ mapa real de Cienaga (levantamiento CAD aportado por el usuario).
 Se ejecuta cada vez que se quiera regenerar el mundo:
     python3 gen_world.py
 """
+import math
 import os
+import random
 
 # Todo se coloca como hijo de un Solid que comparte translation/rotation con
 # la malla del mapa real, asi cada edificio queda alineado con el terreno.
@@ -118,6 +120,31 @@ def paneles_techo(cx, cy, cz, dx, dz, nx, nz):
     return out
 
 
+# Paleta de fachadas de barrio popular costeno (pared, techo, tipo de techo):
+# bloque de concreto sin pintar o pintura sencilla y desgastada, con techo de
+# losa de concreto o de zinc. Cada edificio toma un color del ciclo.
+PALETA_FACHADAS = [
+    ("0.68 0.66 0.62", "0.78 0.78 0.75", "losa"),   # concreto sin pintar
+    ("0.55 0.68 0.78", "0.58 0.58 0.60", "zinc"),   # celeste desgastado
+    ("0.80 0.60 0.55", "0.78 0.78 0.75", "losa"),   # salmon
+    ("0.63 0.72 0.60", "0.58 0.58 0.60", "zinc"),   # verde palido
+    ("0.82 0.74 0.50", "0.58 0.58 0.60", "zinc"),   # amarillo/beige
+    ("0.72 0.52 0.42", "0.78 0.78 0.75", "losa"),   # terracota
+    ("0.85 0.82 0.75", "0.58 0.58 0.60", "zinc"),   # blanco hueso
+]
+_fachada_counter = [0]
+
+
+def _mat(nombre, base, extra=""):
+    if nombre in _fachada_defs:
+        return f"USE {nombre}"
+    _fachada_defs.add(nombre)
+    return f"DEF {nombre} PBRAppearance {{ baseColor {base} roughness 0.92 {extra} }}"
+
+
+_fachada_defs = set()
+
+
 def edificio(cx, cy, cz, dx, dz, solar):
     grupo = "RSOL" if solar else "RNOS"
     base = cy + ALTURA_EDIFICIO_REAL / 2.0
@@ -142,18 +169,42 @@ def edificio(cx, cy, cz, dx, dz, solar):
         nx, nz = paneles_que_caben(dx, dz)
         extra += paneles_techo(cx, cy, cz, dx, dz, nx, nz)
 
-    color = "0.72 0.7 0.66" if not solar else "0.75 0.74 0.7"
+    acera = _mat("ACERA_APP", "0.62 0.61 0.58")
+    k = _fachada_counter[0] % len(PALETA_FACHADAS)
+    _fachada_counter[0] += 1
+    pared, techo, tipo = PALETA_FACHADAS[k]
+    mat_pared = _mat(f"PARED_{k}_APP", pared)
+    mat_techo = _mat(f"TECHO_{k}_APP", techo, "metalness 0.25" if tipo == "zinc" else "")
     return f"""
+Transform {{
+  translation {cx:.3f} {cy + 0.05:.3f} {cz:.3f}
+  children [
+    Shape {{
+      appearance {acera}
+      geometry Box {{
+        size {dx + 1.8:.3f} 0.14 {dz + 1.8:.3f}
+      }}
+    }}
+  ]
+}}
 Transform {{
   translation {cx:.3f} {base:.3f} {cz:.3f}
   children [
     Shape {{
-      appearance PBRAppearance {{
-        baseColor {color}
-        roughness 0.92
-      }}
+      appearance {mat_pared}
       geometry Box {{
         size {dx:.3f} {ALTURA_EDIFICIO_REAL} {dz:.3f}
+      }}
+    }}
+  ]
+}}
+Transform {{
+  translation {cx:.3f} {cy + ALTURA_EDIFICIO_REAL + 0.075:.3f} {cz:.3f}
+  children [
+    Shape {{
+      appearance {mat_techo}
+      geometry Box {{
+        size {dx + 0.3:.3f} 0.15 {dz + 0.3:.3f}
       }}
     }}
   ]
@@ -266,6 +317,182 @@ DEF FLAG_STRIP_{i} Transform {{
     return out
 
 
+# ---------------------------------------------------------------------------
+# Arboles alrededor del mapa: un anillo por fuera del terreno real y algunos
+# en los bordes libres de adentro. Mezcla de arboles de copa redonda (tipo
+# almendro/mango) y palmas, comunes en la costa Caribe. Posiciones con semilla
+# fija (siempre salen iguales) y sin tocar edificios, torre ni bandera.
+# Para cambiar la cantidad: N_ARBOLES_ANILLO y N_ARBOLES_BORDE.
+# ---------------------------------------------------------------------------
+N_ARBOLES_ANILLO = 46
+N_ARBOLES_BORDE = 14
+Y_SUELO_EXTERIOR = 2.21        # el plano de suelo (z = -0.05) en coordenadas locales
+MAPA_X, MAPA_Z = 62.0, 57.0    # semiancho/semilargo aprox. del terreno real
+
+
+def _cargar_terreno():
+    V, F = [None], []
+    ruta = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "worlds", "meshes", "cad-atlas_3D.obj")
+    with open(ruta, encoding="utf-8") as f:
+        for linea in f:
+            if linea.startswith("v "):
+                V.append(tuple(map(float, linea.split()[1:4])))
+            elif linea.startswith("f "):
+                F.append([int(p.split("/")[0]) for p in linea.split()[1:]])
+    return V, F
+
+
+def _altura_terreno(V, F, x, z):
+    for f in F:
+        for i in range(1, len(f) - 1):
+            a, b, c = V[f[0]], V[f[i]], V[f[i + 1]]
+            d = (b[2] - c[2]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[2] - c[2])
+            if abs(d) < 1e-12:
+                continue
+            l1 = ((b[2] - c[2]) * (x - c[0]) + (c[0] - b[0]) * (z - c[2])) / d
+            l2 = ((c[2] - a[2]) * (x - c[0]) + (a[0] - c[0]) * (z - c[2])) / d
+            l3 = 1 - l1 - l2
+            if min(l1, l2, l3) >= -1e-9:
+                return l1 * a[1] + l2 * b[1] + l3 * c[1]
+    return None
+
+
+_arbol_defs = set()
+
+
+def _app(nombre, definicion):
+    if nombre in _arbol_defs:
+        return f"USE {nombre}"
+    _arbol_defs.add(nombre)
+    return f"DEF {nombre} {definicion}"
+
+
+def _arbol_redondo(x, y, z, s, verde):
+    alto = 1.8 * s
+    r = 1.7 * s
+    tronco = _app("TRONCO_APP", "PBRAppearance { baseColor 0.35 0.22 0.12 roughness 1 }")
+    hoja = _app(f"HOJA_{verde}_APP", "PBRAppearance { baseColor %s roughness 1 }" % (
+        ("0.12 0.42 0.14", "0.2 0.5 0.15", "0.08 0.35 0.18")[verde]))
+    return f"""
+Transform {{
+  translation {x:.2f} {y:.2f} {z:.2f}
+  children [
+    Transform {{
+      translation 0 {alto / 2:.2f} 0
+      children [ Shape {{ appearance {tronco} geometry Box {{ size {0.45 * s:.2f} {alto:.2f} {0.45 * s:.2f} }} }} ]
+    }}
+    Transform {{
+      translation 0 {alto + r * 0.7:.2f} 0
+      children [ Shape {{ appearance {hoja} geometry Sphere {{ radius {r:.2f} subdivision 2 }} }} ]
+    }}
+    Transform {{
+      translation {r * 0.55:.2f} {alto + r * 1.35:.2f} {r * 0.2:.2f}
+      children [ Shape {{ appearance {hoja} geometry Sphere {{ radius {r * 0.7:.2f} subdivision 2 }} }} ]
+    }}
+  ]
+}}"""
+
+
+def _palma(x, y, z, s, giro):
+    alto = 7.5 * s
+    tronco = _app("TRONCO_PALMA_APP", "PBRAppearance { baseColor 0.45 0.34 0.22 roughness 1 }")
+    fronda = _app("FRONDA_APP", "PBRAppearance { baseColor 0.1 0.45 0.12 roughness 1 }")
+    frondas = ""
+    for k in range(6):
+        ang = giro + k * math.pi / 3
+        frondas += f"""
+        Transform {{
+          rotation 0 1 0 {ang:.3f}
+          children [
+            Transform {{
+              translation {1.3 * s:.2f} 0 0
+              rotation 0 0 1 -0.45
+              children [ Shape {{ appearance {fronda} geometry Box {{ size {2.8 * s:.2f} 0.06 {0.55 * s:.2f} }} }} ]
+            }}
+          ]
+        }}"""
+    return f"""
+Transform {{
+  translation {x:.2f} {y:.2f} {z:.2f}
+  children [
+    Transform {{
+      translation 0 {alto / 2:.2f} 0
+      children [ Shape {{ appearance {tronco} geometry Box {{ size {0.35 * s:.2f} {alto:.2f} {0.35 * s:.2f} }} }} ]
+    }}
+    Transform {{
+      translation 0 {alto:.2f} 0
+      children [{frondas}
+      ]
+    }}
+  ]
+}}"""
+
+
+def arboles():
+    rnd = random.Random(2024)
+    V, F = _cargar_terreno()
+    libres = [e for e in EDIFICIOS_REALES if e[3] >= 0.8 and e[4] >= 0.8]
+    puntos = []
+
+    def valido(x, z, margen_arbol):
+        if abs(x + 14) < 12 and abs(z + 3) < 9:        # bandera
+            return False
+        if math.hypot(x, z) < 8:                        # torre
+            return False
+        for (cx, cy, cz, dx, dz) in libres:
+            if abs(x - cx) < dx / 2 + 3.5 and abs(z - cz) < dz / 2 + 3.5:
+                return False
+        for (px, pz) in puntos:
+            if math.hypot(x - px, z - pz) < margen_arbol:
+                return False
+        return True
+
+    colocados = []
+
+    def colocar(n, sorteo, y_fn, margen):
+        intentos = 0
+        hechos = 0
+        while hechos < n and intentos < 6000:
+            intentos += 1
+            x, z = sorteo()
+            if not valido(x, z, margen):
+                continue
+            y = y_fn(x, z)
+            if y is None:
+                continue
+            puntos.append((x, z))
+            colocados.append((x, y, z))
+            hechos += 1
+
+    def en_anillo():
+        while True:
+            x = rnd.uniform(-MAPA_X - 14, MAPA_X + 14)
+            z = rnd.uniform(-MAPA_Z - 12, MAPA_Z + 12)
+            if abs(x) > MAPA_X + 2 or abs(z) > MAPA_Z + 2:
+                return x, z
+
+    def en_borde():
+        while True:
+            x = rnd.uniform(-MAPA_X + 2, MAPA_X - 2)
+            z = rnd.uniform(-MAPA_Z + 2, MAPA_Z - 2)
+            if abs(x) > MAPA_X - 9 or abs(z) > MAPA_Z - 9:
+                return x, z
+
+    colocar(N_ARBOLES_ANILLO, en_anillo, lambda x, z: Y_SUELO_EXTERIOR, 7.0)
+    colocar(N_ARBOLES_BORDE, en_borde, lambda x, z: _altura_terreno(V, F, x, z), 7.0)
+
+    out = ""
+    for i, (x, y, z) in enumerate(colocados):
+        s = rnd.uniform(0.85, 1.3)
+        if i % 4 == 3:
+            out += _palma(x, y, z, s, rnd.uniform(0, math.pi))
+        else:
+            out += _arbol_redondo(x, y, z, s, rnd.randrange(3))
+    arboles.total = len(colocados)
+    return out
+
+
 def build_world():
     header = """#VRML_SIM R2023b utf8
 
@@ -283,15 +510,16 @@ Viewpoint {
   position 0 -95 85
   exposure 1
 }
-Background {
+DEF CIELO Background {
   skyColor [
     0.55 0.75 0.95
   ]
 }
-DirectionalLight {
+DEF SOL DirectionalLight {
   direction 0.3 -0.4 -0.9
   intensity 2.5
-  castShadows TRUE
+  ambientIntensity 0.3
+  castShadows FALSE
 }
 
 DEF GROUND Solid {
@@ -316,8 +544,8 @@ DEF MAPA_CIENAGA_REAL Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.85 0.85 0.85
-        roughness 0.9
+        baseColor 0.27 0.27 0.29
+        roughness 0.95
       }
       geometry Mesh {
         url [
@@ -333,7 +561,9 @@ DEF MAPA_CIENAGA_REAL Solid {
 
     _ventana_counter["RSOL"] = 0
     _ventana_counter["RNOS"] = 0
-    hijos = torre() + bandera()
+    _fachada_counter[0] = 0
+    _fachada_defs.clear()
+    hijos = torre() + bandera() + arboles()
     n_solar = n_sin = 0
     idx_elegible = 0
     for (cx, cy, cz, dx, dz) in EDIFICIOS_REALES:
@@ -393,4 +623,5 @@ if __name__ == "__main__":
     print(f"Mundo generado: {out}")
     print(f"Edificios con panel solar: {n_solar}")
     print(f"Edificios sin panel solar: {n_sin}")
+    print(f"Arboles: {arboles.total}")
     print(f"Ventanas con solar: {_ventana_counter['RSOL']}, sin solar: {_ventana_counter['RNOS']}")

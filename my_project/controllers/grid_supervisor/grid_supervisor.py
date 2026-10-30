@@ -4,7 +4,9 @@ Controlador supervisor de la microrred solar sobre el mapa real de Cienaga.
   - Cortes periodicos del fluido electrico (situacion real en Cienaga).
   - Edificios SIN panel solar: se apagan por completo durante el corte.
   - Edificios CON panel solar + bateria: siguen encendidos (en verde) durante
-    el corte mientras la bateria tenga carga; con la red activa la recargan.
+    el corte mientras la bateria tenga carga. Los paneles SOLO cargan la
+    bateria de dia (ciclo dia/noche con el sol moviendose en el cielo): un
+    corte de noche descarga la bateria sin que nada la recargue.
   - HUD con estado de la red y nivel de bateria.
   - Cronograma del proyecto (3 meses / 12 semanas) en vivo, sincronizado con
     el reloj de la simulacion.
@@ -22,8 +24,12 @@ STEPS_PER_SECOND = 1000.0 / TIME_STEP
 GRID_UP_DURATION = 10.0     # segundos con red electrica activa
 GRID_DOWN_DURATION = 6.0    # segundos de corte de luz
 
-BATTERY_DRAIN_PER_STEP = 5.0 / STEPS_PER_SECOND    # % por segundo en corte (6 s -> ~30 %)
-BATTERY_CHARGE_PER_STEP = 8.0 / STEPS_PER_SECOND   # % por segundo con red activa
+BATTERY_DRAIN_PER_STEP = 6.0 / STEPS_PER_SECOND    # % por segundo de consumo durante un corte
+SOLAR_CHARGE_PER_STEP = 6.0 / STEPS_PER_SECOND     # % por segundo con el sol en el cenit
+
+# Ciclo dia/noche: 24 horas simuladas duran DAY_DURATION segundos reales.
+DAY_DURATION = 48.0
+START_HOUR = 6.0                                   # la simulacion arranca al amanecer
 
 COLOR_OFF = (0.0, 0.0, 0.0)
 COLOR_GRID_ON = (0.95, 0.85, 0.35)     # luz calida (red publica)
@@ -103,6 +109,52 @@ def ondear_bandera(t):
         tr.setSFVec3f([_flag_x[i], _flag_y, FLAG_Z + dz])
         ro.setSFRotation([0, 1, 0, -math.atan(pendiente)])
 
+sol_node = supervisor.getFromDef("SOL")
+cielo_node = supervisor.getFromDef("CIELO")
+sol_dir = sol_node.getField("direction") if sol_node else None
+sol_int = sol_node.getField("intensity") if sol_node else None
+sol_amb = sol_node.getField("ambientIntensity") if sol_node else None
+sol_col = sol_node.getField("color") if sol_node else None
+cielo_col = cielo_node.getField("skyColor") if cielo_node else None
+cielo_lum = cielo_node.getField("luminosity") if cielo_node else None
+
+
+def _clamp(v, a=0.0, b=1.0):
+    return max(a, min(b, v))
+
+
+def _mezcla(c1, c2, k):
+    return [c1[i] + (c2[i] - c1[i]) * k for i in range(3)]
+
+
+def actualizar_cielo(hora):
+    """Mueve el sol (este -> oeste), cambia color del cielo y luz ambiente.
+    Devuelve la altura solar s en [-1, 1] (s > 0 = de dia)."""
+    th = 2 * math.pi * (hora - 6.0) / 24.0
+    s = math.sin(th)
+    sx, sy, sz = 0.9 * math.cos(th), -0.35, s
+    n = math.sqrt(sx * sx + sy * sy + sz * sz)
+    dia_dir = (-sx / n, -sy / n, -sz / n)
+    luna_dir = (0.2, -0.3, -0.9)
+    noche = 1.0 - _clamp(s * 3.0)
+    d = [dia_dir[i] + (luna_dir[i] - dia_dir[i]) * noche for i in range(3)]
+    dn = math.sqrt(sum(c * c for c in d))
+    if sol_dir:
+        sol_dir.setSFVec3f([c / dn for c in d])
+        sol_int.setSFFloat(2.5 * (_clamp(s) ** 0.6) + 0.3 * noche)
+        sol_amb.setSFFloat(0.1 + 0.25 * (1.0 - noche))
+        calido = _mezcla([1.0, 0.55, 0.35], [1.0, 0.97, 0.9], _clamp(s * 3.0))
+        sol_col.setSFColor(_mezcla(calido, [0.55, 0.65, 1.0], noche))
+    if cielo_col:
+        dia, noche_c, ocaso = [0.55, 0.75, 0.95], [0.02, 0.03, 0.09], [0.9, 0.5, 0.3]
+        k = _clamp((s + 0.1) / 0.5)
+        c = _mezcla(noche_c, dia, k)
+        c = _mezcla(c, ocaso, 0.5 * _clamp(1.0 - abs(s - 0.05) / 0.2))
+        cielo_col.setMFColor(0, c)
+        cielo_lum.setSFFloat(0.15 + 0.85 * k)
+    return s
+
+
 ventanas_sin_solar = buscar_ventanas("RNOS")
 ventanas_con_solar = buscar_ventanas("RSOL")
 
@@ -112,7 +164,9 @@ print(f"[grid_supervisor] ventanas sin solar: {len(ventanas_sin_solar)}, "
 if hud is None or cronograma_display is None:
     print("[grid_supervisor] ERROR: no se encontraron los Display 'hud'/'cronograma'")
 
-bateria = 100.0
+bateria = 70.0
+sol_altura = 1.0
+hora_sim = START_HOUR
 grid_up = True
 grid_timer = 0.0
 reloj_proyecto = 0.0
@@ -129,6 +183,7 @@ def set_color_all(campos, color):
 
 
 def draw_hud(grid_activa):
+    produccion = max(0.0, sol_altura)
     hud.setColor(0x202020)
     hud.fillRectangle(0, 0, 480, 260)
 
@@ -150,7 +205,7 @@ def draw_hud(grid_activa):
     hud.drawText("Edificios CON panel solar + bateria (propuesta):", 10, 120)
     hud.setColor(0x55DD88)
     if grid_activa:
-        hud.drawText("Con luz (red + cargando bateria)", 20, 138)
+        hud.drawText("Con luz (red publica + paneles)", 20, 138)
     else:
         hud.drawText("Con luz (bateria solar)" if bateria > 0 else "SIN LUZ (bateria agotada)", 20, 138)
 
@@ -162,6 +217,16 @@ def draw_hud(grid_activa):
         hud.fillRectangle(20, 164, ancho, 14)
     hud.setColor(0xFFFFFF)
     hud.drawText(f"Bateria: {bateria:5.1f}%", 230, 162)
+
+    hh = int(hora_sim) % 24
+    mm = int((hora_sim - int(hora_sim)) * 60)
+    hud.setColor(0xFFDD66 if sol_altura > 0 else 0x8899FF)
+    hud.drawText(f"{'DIA' if sol_altura > 0 else 'NOCHE'}  {hh:02d}:{mm:02d}   Produccion solar: {int(produccion * 100):3d}%", 10, 192)
+    hud.setColor(0x444444)
+    hud.fillRectangle(20, 216, 200, 12)
+    if produccion > 0:
+        hud.setColor(0xFFCC33)
+        hud.fillRectangle(20, 216, max(1, int(200 * produccion)), 12)
 
 
 def draw_cronograma(semana_actual):
@@ -212,11 +277,15 @@ while supervisor.step(TIME_STEP) != -1:
     elif (not grid_up) and grid_timer >= GRID_DOWN_DURATION:
         grid_up, grid_timer = True, 0.0
 
-    # --- bateria ---
-    if grid_up:
-        bateria = min(100.0, bateria + BATTERY_CHARGE_PER_STEP)
-    else:
-        bateria = max(0.0, bateria - BATTERY_DRAIN_PER_STEP)
+    # --- dia/noche: sol y cielo ---
+    hora_sim = (START_HOUR + 24.0 * reloj_proyecto / DAY_DURATION) % 24.0
+    if paso % 2 == 0:
+        sol_altura = actualizar_cielo(hora_sim)
+
+    # --- bateria: los paneles solo cargan de dia; el corte la descarga ---
+    carga_solar = SOLAR_CHARGE_PER_STEP * max(0.0, sol_altura)
+    consumo = 0.0 if grid_up else BATTERY_DRAIN_PER_STEP
+    bateria = max(0.0, min(100.0, bateria + carga_solar - consumo))
 
     # --- ventanas: solo se escriben cuando cambia el color ---
     color_sin = COLOR_GRID_ON if grid_up else COLOR_OFF

@@ -14,12 +14,25 @@ Magdalena. Todo se simula sobre el **mapa real** (levantamiento CAD) de la zona.
   - **16 sin panel solar**: se **apagan** por completo en cada corte.
 - Una **torre de la red publica** en el centro del mapa, con una luz que
   parpadea en rojo durante los cortes.
+- Las fachadas usan una **paleta de barrio popular costeno** (concreto sin
+  pintar, celeste, salmon, verde palido, amarillo, terracota, blanco hueso) con
+  techo de losa o de zinc (`PALETA_FACHADAS` en `gen_world.py`).
+- El terreno real esta **pavimentado** (asfalto gris oscuro) y cada edificio
+  tiene su **acera** de concreto alrededor. Fuera del mapa queda el pasto.
 - La **bandera de Cienaga** (dos franjas horizontales iguales: amarillo arriba,
   verde abajo) ondeando en un asta de 14 m en la plazoleta libre del centro del
   mapa, a la izquierda de la torre. Esta hecha de 16 franjas verticales que el
   controlador mueve en cada paso con una onda (se cambia la posicion en
   `FLAG_X`, `FLAG_Z`, `FLAG_Y` de `gen_world.py`; el movimiento se ajusta con
   `WAVE_AMP` y `WAVE_SPEED` en el controlador).
+- **Ciclo dia/noche**: el sol se mueve de este a oeste, el cielo cambia de
+  color (amanecer, dia, ocaso, noche) y 24 horas simuladas duran 48 s reales
+  (`DAY_DURATION`; arranca a las 6:00). Los paneles **solo cargan la bateria de
+  dia**; un corte de noche la descarga sin recarga, y se muestra en el HUD
+  (hora, dia/noche y produccion solar). La bateria baja a `BATTERY_DRAIN_PER_STEP`
+  y sube hasta `SOLAR_CHARGE_PER_STEP` con el sol en el cenit.
+- **60 arboles** (copa redonda y palmas) alrededor del mapa, por fuera del
+  terreno y en sus bordes libres (`N_ARBOLES_ANILLO`, `N_ARBOLES_BORDE` en `gen_world.py`).
 - Dos pantallas superpuestas (overlay) en la vista 3D:
   - **hud**: estado de la red, estado de cada grupo y barra de bateria.
   - **cronograma**: cronograma de 3 meses (12 semanas) en vivo, sincronizado con
