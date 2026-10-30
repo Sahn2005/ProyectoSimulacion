@@ -17,8 +17,11 @@ Magdalena. Todo se simula sobre el **mapa real** (levantamiento CAD) de la zona.
 - Las fachadas usan una **paleta de barrio popular costeno** (concreto sin
   pintar, celeste, salmon, verde palido, amarillo, terracota, blanco hueso) con
   techo de losa o de zinc (`PALETA_FACHADAS` en `gen_world.py`).
-- El terreno real esta **pavimentado** (asfalto gris oscuro) y cada edificio
-  tiene su **acera** de concreto alrededor. Fuera del mapa queda el pasto.
+- El terreno real es de **tierra** y solo los **espacios vacios entre edificios**
+  estan **pavimentados** (asfalto, 162 tiras que siguen la altura del terreno),
+  con una **acera** de concreto alrededor de cada edificio. Como el CAD no trae
+  calles, se pavimenta toda zona libre a menos de `DIST_PAVIMENTO` (7 m) de un
+  edificio (en `gen_world.py`). Fuera del mapa queda el pasto.
 - La **bandera de Cienaga** (dos franjas horizontales iguales: amarillo arriba,
   verde abajo) ondeando en un asta de 14 m en la plazoleta libre del centro del
   mapa, a la izquierda de la torre. Esta hecha de 16 franjas verticales que el

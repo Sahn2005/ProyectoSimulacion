@@ -490,6 +490,93 @@ def arboles():
         else:
             out += _arbol_redondo(x, y, z, s, rnd.randrange(3))
     arboles.total = len(colocados)
+    arboles.puntos = list(puntos)
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Pavimento solo en los espacios vacios entre edificios (calles y patios que
+# rodean las construcciones); el resto del terreno queda como tierra. El CAD no
+# trae calles, asi que se pavimenta toda celda libre a menos de DIST_PAVIMENTO
+# metros de algun edificio. Las celdas contiguas se unen en tiras para no
+# generar demasiados nodos. Cada tira sigue la altura del terreno real.
+# ---------------------------------------------------------------------------
+CELDA = 3.0
+DIST_PAVIMENTO = 7.0
+ESPESOR_PAV = 0.1
+
+
+def pavimento(puntos_arboles):
+    V, F = _cargar_terreno()
+    # indice espacial simple de caras (bins de 6 m) para consultar rapido
+    bins = {}
+    for f in F:
+        xs = [V[i][0] for i in f]
+        zs = [V[i][2] for i in f]
+        for bx in range(int(min(xs) // 6), int(max(xs) // 6) + 1):
+            for bz in range(int(min(zs) // 6), int(max(zs) // 6) + 1):
+                bins.setdefault((bx, bz), []).append(f)
+
+    # _altura_terreno recibe (V, F): le pasamos solo las caras del bin
+    def altura(x, z, _V=V, _b=bins):
+        return _altura_terreno(_V, _b.get((int(x // 6), int(z // 6)), []), x, z)
+
+    libres = [e for e in EDIFICIOS_REALES if e[3] >= 0.8 and e[4] >= 0.8]
+
+    def dist_a_edificios(x, z):
+        mejor = 1e9
+        for (cx, cy, cz, dx, dz) in libres:
+            ax = max(abs(x - cx) - (dx / 2 + 0.9), 0.0)
+            az = max(abs(z - cz) - (dz / 2 + 0.9), 0.0)
+            mejor = min(mejor, math.hypot(ax, az))
+        return mejor
+
+    def pavimentable(x, z):
+        d = dist_a_edificios(x, z)
+        if d < 1.0 or d > DIST_PAVIMENTO:
+            return False
+        if abs(x + 14) < 1.5 and abs(z + 3) < 1.5:       # base del asta
+            return False
+        if math.hypot(x, z) < 2.0:                        # base de la torre
+            return False
+        for (px, pz) in puntos_arboles:
+            if math.hypot(x - px, z - pz) < 2.5:
+                return False
+        return True
+
+    out = ""
+    n_tiras = 0
+    nz = int(2 * MAPA_Z // CELDA)
+    nx = int(2 * MAPA_X // CELDA)
+    for j in range(nz):
+        z = -MAPA_Z + (j + 0.5) * CELDA
+        run = []                                          # celdas (x, h)
+        def volcar():
+            nonlocal out, n_tiras
+            if not run:
+                return
+            x0 = run[0][0] - CELDA / 2
+            x1 = run[-1][0] + CELDA / 2
+            h = sum(r[1] for r in run) / len(run)
+            mat = _mat("PAVIMENTO_APP", "0.27 0.27 0.29")
+            out += f"""
+Transform {{
+  translation {(x0 + x1) / 2:.2f} {h + 0.04:.3f} {z:.2f}
+  children [ Shape {{ appearance {mat} geometry Box {{ size {x1 - x0:.2f} {ESPESOR_PAV} {CELDA:.2f} }} }} ]
+}}"""
+            n_tiras += 1
+            run.clear()
+        for i in range(nx):
+            x = -MAPA_X + (i + 0.5) * CELDA
+            h = altura(x, z) if pavimentable(x, z) else None
+            if h is None:
+                volcar()
+                continue
+            if run and abs(h - run[0][1]) > 0.15:
+                volcar()
+            run.append((x, h))
+        volcar()
+    pavimento.total = n_tiras
     return out
 
 
@@ -544,8 +631,8 @@ DEF MAPA_CIENAGA_REAL Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.27 0.27 0.29
-        roughness 0.95
+        baseColor 0.52 0.41 0.29
+        roughness 1
       }
       geometry Mesh {
         url [
@@ -563,7 +650,8 @@ DEF MAPA_CIENAGA_REAL Solid {
     _ventana_counter["RNOS"] = 0
     _fachada_counter[0] = 0
     _fachada_defs.clear()
-    hijos = torre() + bandera() + arboles()
+    _arb = arboles()
+    hijos = torre() + bandera() + _arb + pavimento(arboles.puntos)
     n_solar = n_sin = 0
     idx_elegible = 0
     for (cx, cy, cz, dx, dz) in EDIFICIOS_REALES:
@@ -623,5 +711,5 @@ if __name__ == "__main__":
     print(f"Mundo generado: {out}")
     print(f"Edificios con panel solar: {n_solar}")
     print(f"Edificios sin panel solar: {n_sin}")
-    print(f"Arboles: {arboles.total}")
+    print(f"Arboles: {arboles.total}  |  tiras de pavimento: {pavimento.total}")
     print(f"Ventanas con solar: {_ventana_counter['RSOL']}, sin solar: {_ventana_counter['RNOS']}")
